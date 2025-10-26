@@ -5,6 +5,32 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
+/**
+ * @typedef {Object} MenuItemType
+ * @property {string} label
+ * @property {string} ariaLabel
+ * @property {string} link
+ */
+
+/**
+ * @param {{
+*   position?: "left" | "right";
+*   colors?: string[];
+*   items?: MenuItemType[];
+*   socialItems?: MenuItemType[];
+*   displaySocials?: boolean;
+*   displayItemNumbering?: boolean;
+*   className?: string;
+*   logoUrl?: string;
+*   menuButtonColor?: string;
+*   openMenuButtonColor?: string;
+*   changeMenuColorOnOpen?: boolean;
+*   isFixed?: boolean;
+*   accentColor?: string;
+*   onMenuOpen?: () => void;
+*   onMenuClose?: () => void;
+* }} props
+*/
 export const StaggeredMenu = ({
   position = "right",
   colors = ["#B19EEF", "#5227FF"],

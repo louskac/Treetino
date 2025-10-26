@@ -8,6 +8,21 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * @typedef {Object} ScrollRevealProps
+ * @property {any} children
+ * @property {any} [scrollContainerRef]
+ * @property {boolean} [enableBlur]
+ * @property {number} [baseOpacity]
+ * @property {number} [baseRotation]
+ * @property {number} [blurStrength]
+ * @property {string} [containerClassName]
+ * @property {string} [textClassName]
+ * @property {string} [rotationEnd]
+ * @property {string} [wordAnimationEnd]
+ */
+
+/** @param {ScrollRevealProps} props */
 const ScrollReveal = ({
   children,
   scrollContainerRef,
