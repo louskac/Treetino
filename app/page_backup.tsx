@@ -10,6 +10,7 @@ import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
 import ProfileCard from '@/Components/ProfileCard'
+import PerformanceMonitor from '@/Components/PerformanceMonitor';
 
 import Timeline from '@/Components/Timeline/Timeline';
 import { treetinoTimeline } from '@/Components/Timeline/timelineData';
@@ -22,8 +23,8 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-  { label: 'Tree', ariaLabel: 'Learn about Treetino', link: '/tree' },
-  { label: 'Web3', ariaLabel: 'Explore our Web3 protocol', link: '/web3' },
+  { label: 'About', ariaLabel: 'Learn about Treetino', link: '/about' },
+  { label: 'Web3', ariaLabel: 'Explore our Web3 protocol', link: '/protocol' },
   { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
 ];
 
@@ -55,6 +56,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
+      <PerformanceMonitor />
       {/* Liquid Ether Background */}
       <div className="absolute inset-0 z-0">
         <LiquidEther

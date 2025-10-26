@@ -3,6 +3,9 @@
 import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
+import PerformanceMonitor from '@/Components/PerformanceMonitor';
+import Timeline from '@/Components/Timeline/Timeline';
+import { treetinoTimeline } from '@/Components/Timeline/timelineData';
 
 type MenuItem = {
   label: string;
@@ -26,6 +29,7 @@ const socialItems: MenuItem[] = [
 export default function TreePage() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
+      <PerformanceMonitor />
       {/* Liquid Ether Background */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
@@ -116,6 +120,26 @@ export default function TreePage() {
           </div>
         </div>
       </div>
+
+            {/* Timeline Section - Our Journey */}
+            <div className="relative z-10 py-80 px-6">
+              <div className="max-w-7xl w-full mx-auto">
+                
+                {/* Section Header */}
+                <div className="text-center mb-16 space-y-4">
+                  <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
+                    Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Journey</span>
+                  </h2>
+                  
+                  <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
+                    From vision to reality - the milestones that shaped Treetino
+                  </p>
+                </div>
+      
+                {/* Timeline Component */}
+                <Timeline events={treetinoTimeline} />
+              </div>
+            </div>
     </main>
   );
 }

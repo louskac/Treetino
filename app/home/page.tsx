@@ -1,30 +1,18 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
 
 import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
+import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
+import TiltedCard from '@/Components/TiltedCard/TiltedCard';
+import ProfileCard from '@/Components/ProfileCard'
 import PerformanceMonitor from '@/Components/PerformanceMonitor';
 
-// Lazy load heavy components
-const ScrollReveal = dynamic(() => import('@/TextAnimations/ScrollReveal/ScrollReveal'), {
-  loading: () => <div className="min-h-[200px]" />
-});
-const TiltedCard = dynamic(() => import('@/Components/TiltedCard/TiltedCard'), {
-  loading: () => <div className="w-[280px] h-[280px]" />
-});
-const Timeline = dynamic(() => import('@/Components/Timeline/Timeline'), {
-  loading: () => <div className="h-96" />
-});
-const ProfileCard = dynamic(() => import('@/Components/ProfileCard'), {
-  loading: () => <div className="w-full h-[400px]" />
-});
-
+import Timeline from '@/Components/Timeline/Timeline';
 import { treetinoTimeline } from '@/Components/Timeline/timelineData';
 
 type MenuItem = {
@@ -34,7 +22,7 @@ type MenuItem = {
 };
 
 const menuItems: MenuItem[] = [
-  { label: 'Home', ariaLabel: 'Go to home page', link: '/home' },
+  { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
   { label: 'Tree', ariaLabel: 'Learn about Treetino', link: '/tree' },
   { label: 'Web3', ariaLabel: 'Explore our Web3 protocol', link: '/web3' },
   { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
@@ -46,55 +34,29 @@ const socialItems: MenuItem[] = [
   { label: 'LinkedIn', ariaLabel: 'Visit our LinkedIn', link: 'https://linkedin.com/company/treetino' }
 ];
 
-export default function HomePage() {
-  const router = useRouter();
-  
-  // Refs for intersection observers
+export default function Home() {
+  // Create a ref for the intro section to track scroll
   const introRef = useRef<HTMLDivElement>(null);
-  const [isIntroInView, setIsIntroInView] = useState(false);
   
-  // Track scroll progress ONLY when section is in view
+  // Track scroll progress of the intro section
   const { scrollYProgress } = useScroll({
     target: introRef,
     offset: ["start end", "end start"]
   });
 
-  // Parallax transforms - only calculate when in view
+  // Different parallax speeds for each card
+  // Card 1 (Left upper): Fast upward movement
   const card1Y = useTransform(scrollYProgress, [0, 1], [150, -200]);
+  
+  // Card 2 (Right): Medium speed downward movement
   const card2Y = useTransform(scrollYProgress, [0, 1], [-100, 150]);
+  
+  // Card 3 (Left lower): Slow upward movement
   const card3Y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-  // Intersection observer for intro section
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsIntroInView(entry.isIntersecting);
-      },
-      { threshold: 0.1, rootMargin: '100px' }
-    );
-    
-    if (introRef.current) {
-      observer.observe(introRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
-
-  // Prefetch other pages on mount
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.prefetch('/tree');
-      router.prefetch('/web3');
-      router.prefetch('/contact');
-    }, 2000);
-    
-    return () => clearTimeout(timer);
-  }, [router]);
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
       <PerformanceMonitor />
-      
       {/* Liquid Ether Background */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
@@ -193,45 +155,43 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Intro Section - Parallax only calculates when in view */}
+      {/* Intro Section */}
       <div ref={introRef} className="relative z-10 flex min-h-[100vh] items-center justify-center">
         <div className='max-w-7xl w-full mx-auto px-6 sticky top-1/3 -translate-y-1/3'>
           <div className="relative flex items-center justify-center">
             
-            {/* Left Tilted Card - FAST PARALLAX */}
-            {isIntroInView && (
-              <motion.div 
-                className="absolute -left-32 top-20 -translate-y-[60%] z-0 pointer-events-auto" 
-                style={{ 
-                  y: card1Y,
-                  willChange: 'transform'
-                }}
-              >
-                <TiltedCard
-                  imageSrc="cards/first.jpg"
-                  altText="Treetino Model Left"
-                  captionText="Discussing with angel"
-                  containerHeight="280px"
-                  containerWidth="280px"
-                  imageHeight="280px"
-                  imageWidth="280px"
-                  rotateAmplitude={12}
-                  scaleOnHover={1.15}
-                  showMobileWarning={false}
-                  showTooltip={true}
-                  displayOverlayContent={true}
-                  overlayContent={
-                    <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
-                      <p className="text-sm font-semibold whitespace-nowrap">
-                        Founders
-                      </p>
-                    </div>
-                  }
-                />
-              </motion.div>
-            )}
+            {/* Left Tilted Card - higher and tilted right - FAST PARALLAX */}
+            <motion.div 
+              className="absolute -left-32 top-20 -translate-y-[60%] z-0 pointer-events-auto" 
+              style={{ 
+                transform: 'translateY(-60%) rotateY(15deg) rotateX(-5deg)',
+                y: card1Y
+              }}
+            >
+              <TiltedCard
+                imageSrc="cards/first.jpg"
+                altText="Treetino Model Left"
+                captionText="Discussing with angel"
+                containerHeight="280px"
+                containerWidth="280px"
+                imageHeight="280px"
+                imageWidth="280px"
+                rotateAmplitude={12}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Founders
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
 
-            {/* Center Text */}
+            {/* Center Text - in front, higher z-index */}
             <div className='max-w-5xl w-full text-center space-y-8 relative z-10'>
               <ScrollReveal
                 baseOpacity={0}
@@ -246,92 +206,68 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Tilted Card - MEDIUM PARALLAX */}
-            {isIntroInView && (
-              <motion.div 
-                className="absolute -right-32 top-1/2 -translate-y-[40%] z-0 pointer-events-auto" 
-                style={{ 
-                  y: card2Y,
-                  willChange: 'transform'
-                }}
-              >
-                <TiltedCard
-                  imageSrc="cards/second.jpeg"
-                  altText="Treetino Model Right"
-                  captionText="Presented at a show"
-                  containerHeight="280px"
-                  containerWidth="280px"
-                  imageHeight="280px"
-                  imageWidth="280px"
-                  rotateAmplitude={12}
-                  scaleOnHover={1.15}
-                  showMobileWarning={false}
-                  showTooltip={true}
-                  displayOverlayContent={true}
-                  overlayContent={
-                    <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
-                      <p className="text-sm font-semibold whitespace-nowrap">
-                        Model
-                      </p>
-                    </div>
-                  }
-                />
-              </motion.div>
-            )}
+            {/* Right Tilted Card - lower and tilted left - MEDIUM PARALLAX */}
+            <motion.div 
+              className="absolute -right-32 top-1/2 -translate-y-[40%] z-0 pointer-events-auto" 
+              style={{ 
+                transform: 'translateY(-40%) rotateY(-15deg) rotateX(5deg)',
+                y: card2Y
+              }}
+            >
+              <TiltedCard
+                imageSrc="cards/second.jpeg"
+                altText="Treetino Model Right"
+                captionText="Presented at a show"
+                containerHeight="280px"
+                containerWidth="280px"
+                imageHeight="280px"
+                imageWidth="280px"
+                rotateAmplitude={12}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Model
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
             
-            {/* Left lower card - SLOW PARALLAX */}
-            {isIntroInView && (
-              <motion.div 
-                className="absolute -left-0 top-[45vh] -translate-y-[60%] z-0 pointer-events-auto" 
-                style={{ 
-                  y: card3Y,
-                  willChange: 'transform'
-                }}
-              >
-                <TiltedCard
-                  imageSrc="cards/third.jpg"
-                  altText="Treetino Model Left"
-                  captionText="Picked by Czech Invest"
-                  containerHeight="280px"
-                  containerWidth="280px"
-                  imageHeight="280px"
-                  imageWidth="280px"
-                  rotateAmplitude={12}
-                  scaleOnHover={1.15}
-                  showMobileWarning={false}
-                  showTooltip={true}
-                  displayOverlayContent={true}
-                  overlayContent={
-                    <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
-                      <p className="text-sm font-semibold whitespace-nowrap">
-                        Pitch
-                      </p>
-                    </div>
-                  }
-                />
-              </motion.div>
-            )}
+            {/* Left lower card - lower and tilted left - SLOW PARALLAX */}
+            <motion.div 
+              className="absolute -left-0 top-[45vh] -translate-y-[60%] z-0 pointer-events-auto" 
+              style={{ 
+                transform: 'translateY(-60%) rotateY(15deg) rotateX(-5deg)',
+                y: card3Y
+              }}
+            >
+              <TiltedCard
+                imageSrc="cards/third.jpg"
+                altText="Treetino Model Left"
+                captionText="Picked by Czech Invest"
+                containerHeight="280px"
+                containerWidth="280px"
+                imageHeight="280px"
+                imageWidth="280px"
+                rotateAmplitude={12}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Pitch
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
           </div>
-        </div>
-      </div>
-
-      {/* Timeline Section - Our Journey */}
-      <div className="relative z-10 py-80 px-6">
-        <div className="max-w-7xl w-full mx-auto">
-          
-          {/* Section Header */}
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Journey</span>
-            </h2>
-            
-            <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
-              From vision to reality - the milestones that shaped Treetino
-            </p>
-          </div>
-
-          {/* Timeline Component */}
-          <Timeline events={treetinoTimeline} />
         </div>
       </div>
 
@@ -353,6 +289,7 @@ export default function HomePage() {
           {/* 3x2 Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto mb-8">
             
+            {/* Row 1 */}
             <div className="flex justify-center">
               <ProfileCard
                 name="Dominik"
@@ -398,6 +335,7 @@ export default function HomePage() {
               />
             </div>
 
+            {/* Row 2 */}
             <div className="flex justify-center">
               <ProfileCard
                 name="Monika"
