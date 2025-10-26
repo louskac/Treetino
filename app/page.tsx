@@ -1,10 +1,15 @@
 "use client";
 
+import dynamic from 'next/dynamic';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+
 import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
-import { Timeline } from "@/Components/ui/timeline";
+import TiltedCard from '@/Components/TiltedCard/TiltedCard';
+import ProfileCard from '@/Components/ProfileCard'
 
 type MenuItem = {
   label: string;
@@ -25,172 +30,32 @@ const socialItems: MenuItem[] = [
   { label: 'LinkedIn', ariaLabel: 'Visit our LinkedIn', link: 'https://linkedin.com/company/treetino' }
 ];
 
-const data = [
-  {
-    title: "2021 - 2023",
-    content: (
-      <div>
-        <p className="mb-8 text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold text-white">
-          Operational setup
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://assets.aceternity.com/templates/startup-1.webp"
-            alt="startup template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/templates/startup-2.webp"
-            alt="startup template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "2023 - 2024",
-    content: (
-      <div>
-        <p className="mb-8 text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold text-white">
-          Technology development
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://assets.aceternity.com/pro/hero-sections.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/features-section.png"
-            alt="feature template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "2024-2025",
-    content: (
-      <div>
-        <p className="mb-4 text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold text-white">
-          Stategic investment acquisition
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://assets.aceternity.com/pro/hero-sections.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/features-section.png"
-            alt="feature template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "2025",
-    content: (
-      <div>
-        <p className="mb-4 text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold text-white">
-          Prototype development
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://assets.aceternity.com/pro/hero-sections.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/features-section.png"
-            alt="feature template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "2026",
-    content: (
-      <div>
-        <p className="mb-4 text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold text-white">
-          Fist sales & capital raise
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://assets.aceternity.com/pro/hero-sections.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/features-section.png"
-            alt="feature template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: "2027",
-    content: (
-      <div>
-        <p className="mb-4 text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold text-white">
-          Scaling to forest network
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          <img
-            src="https://assets.aceternity.com/pro/hero-sections.png"
-            alt="hero template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="https://assets.aceternity.com/features-section.png"
-            alt="feature template"
-            width={500}
-            height={500}
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-        </div>
-      </div>
-    ),
-  },
-];
-
 export default function Home() {
+  // Create a ref for the intro section to track scroll
+  const introRef = useRef<HTMLDivElement>(null);
+  
+  // Track scroll progress of the intro section
+  const { scrollYProgress } = useScroll({
+    target: introRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Different parallax speeds for each card
+  // Card 1 (Left upper): Fast upward movement
+  const card1Y = useTransform(scrollYProgress, [0, 1], [150, -200]);
+  
+  // Card 2 (Right): Medium speed downward movement
+  const card2Y = useTransform(scrollYProgress, [0, 1], [-100, 150]);
+  
+  // Card 3 (Left lower): Slow upward movement
+  const card3Y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
       {/* Liquid Ether Background */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
-          colors={['#2762AD', '#183D89', '#2762AD']}
+          colors={['#2762AD', '#2762AD', '#2762AD']}
           mouseForce={20}
           cursorSize={300}
           isViscous={false}
@@ -230,14 +95,6 @@ export default function Home() {
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 pointer-events-none">
         <div className="max-w-6xl w-full text-center space-y-8">
           
-          {/* Badge */}
-          <GlassSurface 
-            height={56}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#2A293A]/50 backdrop-blur-sm border border-[#2762AD]/30 pointer-events-auto"
-          >
-            <span className="text-sm text-[#E8F1FF]/80 font-medium">Treetino</span>
-          </GlassSurface>
-
           {/* Main Heading */}
           <h1 className="text-6xl md:text-8xl font-bold text-[#E8F1FF] leading-tight tracking-tight">
             The future of energy,
@@ -293,25 +150,239 @@ export default function Home() {
         </div>
       </div>
 
-
       {/* Intro Section */}
-      <div className="relative z-10 flex min-h-[100vh] items-center justify-center pointer-events-none">
-        <div className='max-w-5xl w-full text-center space-y-8 sticky top-1/3 -translate-y-1/3'>
-          <ScrollReveal
-            baseOpacity={0}
-            enableBlur={true}
-            baseRotation={5}
-            blurStrength={10}
-            wordAnimationEnd="center center"
-            rotationEnd="center center"
-          >
-            In an ever more reliant world on electicity we are creating futuristic powerplants designed as trees with solar panels as leafs and transparent wind turbines to produce energy consistantly. 
-          </ScrollReveal>
+      <div ref={introRef} className="relative z-10 flex min-h-[100vh] items-center justify-center">
+        <div className='max-w-7xl w-full mx-auto px-6 sticky top-1/3 -translate-y-1/3'>
+          <div className="relative flex items-center justify-center">
+            
+            {/* Left Tilted Card - higher and tilted right - FAST PARALLAX */}
+            <motion.div 
+              className="absolute -left-32 top-20 -translate-y-[60%] z-0 pointer-events-auto" 
+              style={{ 
+                transform: 'translateY(-60%) rotateY(15deg) rotateX(-5deg)',
+                y: card1Y
+              }}
+            >
+              <TiltedCard
+                imageSrc="cards/first.jpg"
+                altText="Treetino Model Left"
+                captionText="Discussing with angel"
+                containerHeight="280px"
+                containerWidth="280px"
+                imageHeight="280px"
+                imageWidth="280px"
+                rotateAmplitude={12}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Founders
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
+
+            {/* Center Text - in front, higher z-index */}
+            <div className='max-w-5xl w-full text-center space-y-8 relative z-10'>
+              <ScrollReveal
+                baseOpacity={0}
+                enableBlur={true}
+                baseRotation={5}
+                blurStrength={10}
+                wordAnimationEnd="center center"
+                rotationEnd="center center"
+                textClassName="text-white"
+              >
+                In an ever more reliant world on electricity we are creating futuristic powerplants designed as trees with solar panels as leafs and transparent wind turbines to produce energy consistently. 
+              </ScrollReveal>
+            </div>
+
+            {/* Right Tilted Card - lower and tilted left - MEDIUM PARALLAX */}
+            <motion.div 
+              className="absolute -right-32 top-1/2 -translate-y-[40%] z-0 pointer-events-auto" 
+              style={{ 
+                transform: 'translateY(-40%) rotateY(-15deg) rotateX(5deg)',
+                y: card2Y
+              }}
+            >
+              <TiltedCard
+                imageSrc="cards/second.jpeg"
+                altText="Treetino Model Right"
+                captionText="Presented at a show"
+                containerHeight="280px"
+                containerWidth="280px"
+                imageHeight="280px"
+                imageWidth="280px"
+                rotateAmplitude={12}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Model
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
+            
+            {/* Left lower card - lower and tilted left - SLOW PARALLAX */}
+            <motion.div 
+              className="absolute -left-0 top-[45vh] -translate-y-[60%] z-0 pointer-events-auto" 
+              style={{ 
+                transform: 'translateY(-60%) rotateY(15deg) rotateX(-5deg)',
+                y: card3Y
+              }}
+            >
+              <TiltedCard
+                imageSrc="cards/third.jpg"
+                altText="Treetino Model Left"
+                captionText="Picked by Czech Invest"
+                containerHeight="280px"
+                containerWidth="280px"
+                imageHeight="280px"
+                imageWidth="280px"
+                rotateAmplitude={12}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div className="bg-black/70 text-white px-4 py-2 rounded-xl backdrop-blur-md shadow-lg mt-3 ml-3">
+                    <p className="text-sm font-semibold whitespace-nowrap">
+                      Pitch
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      <div className="relative w-full overflow-clip bg-black pt-96">
-        <Timeline data={data} />
+      {/* Team Section - 3x2 Grid of Profile Cards */}
+      <div className="relative z-10 py-20 px-6">
+        <div className="max-w-7xl w-full mx-auto">
+          
+          {/* Section Header */}
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
+              Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Innovators</span>
+            </h2>
+            
+            <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
+              The minds behind the sustainable energy revolution
+            </p>
+          </div>
+
+          {/* 3x2 Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto mb-8">
+            
+            {/* Row 1 */}
+            <div className="flex justify-center">
+              <ProfileCard
+                name="Dominik"
+                title="Founder & CEO"
+                handle="Dominik Masek"
+                status="Founded Wattino"
+                contactText="LinkedIn"
+                imageUrl="/team/dominik.png"
+                avatarUrl="/team/dominik.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => console.log('Contact Dominik')}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <ProfileCard
+                name="Jakub"
+                title="Co-Founder & CTO"
+                handle="jakub_lustyk"
+                status="Founded Nocena"
+                contactText="Twitter/X"
+                imageUrl="/team/jakub.png"
+                avatarUrl="/team/jakub.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => console.log('Contact CTO')}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <ProfileCard
+                name="Matěj"
+                title="Architect"
+                handle="matej_cizek"
+                status="Technical design"
+                contactText="Portfolio"
+                imageUrl="/team/matej.png"
+                avatarUrl="/team/matej.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => console.log('Contact Engineer')}
+              />
+            </div>
+
+            {/* Row 2 */}
+            <div className="flex justify-center">
+              <ProfileCard
+                name="Monika"
+                title="Public relations"
+                handle="monika_zverinova"
+                status="TV moderator"
+                contactText="Portfolio"
+                imageUrl="/team/monika.png"
+                avatarUrl="/team/monika.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => console.log('Contact Designer')}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <ProfileCard
+                name="Greta"
+                title="Digital presence"
+                handle="geta_bozkhova"
+                status="Social media"
+                contactText="LinkedIn"
+                imageUrl="/team/greta.png"
+                avatarUrl="/team/greta.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => console.log('Contact Researcher')}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <ProfileCard
+                name="Radim"
+                title="Mehcanical engeneere"
+                handle="radim_novotny"
+                status="Product development"
+                contactText="Contact Me"
+                imageUrl="/team/radim.png"
+                avatarUrl="/team/radim.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => console.log('Contact BD')}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
