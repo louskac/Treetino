@@ -11,6 +11,9 @@ import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
 import ProfileCard from '@/Components/ProfileCard'
 
+import Timeline from '@/Components/Timeline/Timeline';
+import { treetinoTimeline } from '@/Components/Timeline/timelineData';
+
 type MenuItem = {
   label: string;
   ariaLabel: string;
@@ -123,7 +126,7 @@ export default function Home() {
               className="relative group overflow-hidden rounded-full min-w-[180px]"
             >
               <GlassSurface 
-                height={56}
+                height={"56"}
                 className="px-8 py-4 flex items-center justify-center border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all w-full"
               >
                 <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors">
@@ -266,6 +269,26 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Timeline Section - Our Journey */}
+      <div className="relative z-10 py-80 px-6">
+        <div className="max-w-7xl w-full mx-auto">
+          
+          {/* Section Header */}
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Journey</span>
+            </h2>
+            
+            <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
+              From vision to reality - the milestones that shaped Treetino
+            </p>
+          </div>
+
+          {/* Timeline Component */}
+          <Timeline events={treetinoTimeline} />
+        </div>
+      </div>
+
       {/* Team Section - 3x2 Grid of Profile Cards */}
       <div className="relative z-10 py-20 px-6">
         <div className="max-w-7xl w-full mx-auto">
@@ -292,7 +315,6 @@ export default function Home() {
                 handle="Dominik Masek"
                 status="Founded Wattino"
                 contactText="LinkedIn"
-                imageUrl="/team/dominik.png"
                 avatarUrl="/team/dominik.png"
                 showUserInfo={true}
                 enableTilt={true}
@@ -308,7 +330,6 @@ export default function Home() {
                 handle="jakub_lustyk"
                 status="Founded Nocena"
                 contactText="Twitter/X"
-                imageUrl="/team/jakub.png"
                 avatarUrl="/team/jakub.png"
                 showUserInfo={true}
                 enableTilt={true}
@@ -324,7 +345,6 @@ export default function Home() {
                 handle="matej_cizek"
                 status="Technical design"
                 contactText="Portfolio"
-                imageUrl="/team/matej.png"
                 avatarUrl="/team/matej.png"
                 showUserInfo={true}
                 enableTilt={true}
@@ -341,7 +361,6 @@ export default function Home() {
                 handle="monika_zverinova"
                 status="TV moderator"
                 contactText="Portfolio"
-                imageUrl="/team/monika.png"
                 avatarUrl="/team/monika.png"
                 showUserInfo={true}
                 enableTilt={true}
@@ -357,7 +376,6 @@ export default function Home() {
                 handle="geta_bozkhova"
                 status="Social media"
                 contactText="LinkedIn"
-                imageUrl="/team/greta.png"
                 avatarUrl="/team/greta.png"
                 showUserInfo={true}
                 enableTilt={true}
@@ -373,7 +391,6 @@ export default function Home() {
                 handle="radim_novotny"
                 status="Product development"
                 contactText="Contact Me"
-                imageUrl="/team/radim.png"
                 avatarUrl="/team/radim.png"
                 showUserInfo={true}
                 enableTilt={true}

@@ -23,8 +23,30 @@ const adjust = (value, fromMin, fromMax, toMin, toMax) =>
 
 const easeInOutCubic = x => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
+/**
+ * @param {{
+*   avatarUrl?: string;
+*   iconUrl?: string;
+*   grainUrl?: string;
+*   behindGradient?: string;
+*   innerGradient?: string;
+*   showBehindGradient?: boolean;
+*   className?: string;
+*   enableTilt?: boolean;
+*   enableMobileTilt?: boolean;
+*   mobileTiltSensitivity?: number;
+*   miniAvatarUrl?: string;
+*   name?: string;
+*   title?: string;
+*   handle?: string;
+*   status?: string;
+*   contactText?: string;
+*   showUserInfo?: boolean;
+*   onContactClick?: () => void;
+* }} props
+*/
 const ProfileCardComponent = ({
-  avatarUrl = '<Placeholder for avatar URL>',
+ avatarUrl = '<Placeholder for avatar URL>',
   iconUrl = '<Placeholder for icon URL>',
   grainUrl = '<Placeholder for grain URL>',
   behindGradient,
