@@ -328,10 +328,10 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/vision.jpg",
+        src: "/timeline/future.jpg",
         alt: "Clean energy impact",
-        caption: "Clean energy revolution",
-        overlayText: "Impact",
+        caption: "We imagine a full interconnected urban forest",
+        overlayText: "Future",
         position: "left",
         offsetX: "4%",
         offsetY: "28%",
