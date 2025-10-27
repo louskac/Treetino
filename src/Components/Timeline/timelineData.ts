@@ -55,13 +55,13 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/vision.jpg",
+        src: "/timeline/founded.jpg",
         alt: "Company foundation",
         caption: "Treetino s.r.o. establishment",
         overlayText: "Founded",
         position: "left",
-        offsetX: "3%",
-        offsetY: "-35%",
+        offsetX: "-2%",
+        offsetY: "-55%",
         parallaxSpeed: "fast",
         size: {
           width: "320px",
@@ -69,12 +69,12 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/government.jpeg",
+        src: "/timeline/established.JPG",
         alt: "Legal framework",
-        caption: "Legal and operational setup",
-        overlayText: "Established",
+        caption: "Founders showing of solar leaf",
+        overlayText: "Founders",
         position: "right",
-        offsetX: "3%",
+        offsetX: "10%",
         offsetY: "25%",
         parallaxSpeed: "slow",
         size: {
@@ -92,9 +92,9 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/prototype.jpg",
+        src: "/timeline/innovation.jpg",
         alt: "Technology research",
-        caption: "R&D phase",
+        caption: "Founders pitching",
         overlayText: "Innovation",
         position: "left",
         offsetX: "2%",
@@ -106,12 +106,12 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/vision.jpg",
+        src: "/timeline/development.jpg",
         alt: "Solar and wind tech",
-        caption: "Integrated technologies",
+        caption: "Transparent windturbines",
         overlayText: "Development",
         position: "right",
-        offsetX: "3%",
+        offsetX: "-15%",
         offsetY: "-30%",
         parallaxSpeed: "fast",
         size: {
@@ -129,12 +129,12 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/government.jpeg",
+        src: "/timeline/sustainability.jpg",
         alt: "Environmental assessment",
-        caption: "Impact modeling",
+        caption: "Leafs have aluminium frame that protects them",
         overlayText: "Sustainability",
         position: "left",
-        offsetX: "4%",
+        offsetX: "20%",
         offsetY: "25%",
         parallaxSpeed: "slow",
         size: {
@@ -143,12 +143,12 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/prototype.jpg",
+        src: "/timeline/analysis.jpg",
         alt: "Tree projection systems",
         caption: "Advanced modeling",
-        overlayText: "Analysis",
+        overlayText: "Pitch day",
         position: "right",
-        offsetX: "6%",
+        offsetX: "-5%",
         offsetY: "-28%",
         parallaxSpeed: "fast",
         size: {
@@ -166,13 +166,13 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/government.jpeg",
+        src: "/timeline/investment.png",
         alt: "Government partnership",
         caption: "Czech Invest backing",
         overlayText: "Investment",
         position: "right",
-        offsetX: "5%",
-        offsetY: "-20%",
+        offsetX: "20%",
+        offsetY: "20%",
         parallaxSpeed: "medium",
         size: {
           width: "340px",
@@ -180,14 +180,14 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/vision.jpg",
+        src: "/timeline/funding.jpg",
         alt: "Investor engagement",
-        caption: "Private investors",
+        caption: "Won 300k EUR from Czech Goverment",
         overlayText: "Funding",
         position: "left",
         offsetX: "3%",
         offsetY: "22%",
-        parallaxSpeed: "slow",
+        parallaxSpeed: "fast",
         size: {
           width: "300px",
           height: "350px"
@@ -217,10 +217,10 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/vision.jpg",
+        src: "/timeline/team.jpg",
         alt: "Performance optimization",
-        caption: "Optimization phase",
-        overlayText: "In Progress",
+        caption: "Team catching a quick break between pitches",
+        overlayText: "Team",
         position: "right",
         offsetX: "4%",
         offsetY: "-25%",
@@ -254,10 +254,10 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/prototype.jpg",
-        alt: "First installation",
+        src: "/timeline/artiffine.jpg",
+        alt: "External Artiffine team - experts at Web3",
         caption: "First tree installation",
-        overlayText: "Milestone",
+        overlayText: "Artffine",
         position: "left",
         offsetX: "3%",
         offsetY: "-22%",

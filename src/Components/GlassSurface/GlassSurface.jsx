@@ -25,8 +25,8 @@ const useDarkMode = () => {
 
 const GlassSurface = ({
   children,
-  width = '100%',
-  height = 'auto',
+  width = '100%',     // ✅ full width by default
+  height = 'auto',    // ✅ let it size by content
   borderRadius = 20,
   borderWidth = 0.07,
   brightness = 50,

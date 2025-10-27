@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect } from 'react';
-import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
 import { getIcon } from './timelineData';
 
@@ -278,35 +277,43 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
         </motion.div>
       </motion.div>
 
-      {/* Content card - Using GlassSurface with OPTIMAL settings for liquid glass effect */}
+      {/* Content card with PROPER glass morphism effect */}
       <motion.div
         className={`w-full pl-20 pr-4 md:pr-0 md:pl-0 md:w-[45%] relative z-10 ${
           isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
         }`}
         style={{ opacity, x, scale }}
       >
-        <GlassSurface
-          height="auto"
-          className="w-full border-2 border-[#2762AD]/30 hover:border-[#2762AD]/70 transition-all duration-500 group cursor-pointer"
-          // These settings maximize the liquid glass distortion effect
-          blur={15}                    // Increased blur for stronger glass effect
-          displace={1.2}               // Higher displacement for more distortion
-          brightness={30}              // Lower brightness for darker, more premium glass
-          opacity={0.88}               // Slightly less opaque for better transparency
-          backgroundOpacity={0.12}     // Subtle background tint
-          saturation={1.4}             // Enhanced color saturation through glass
-          distortionScale={-200}       // Stronger distortion scale
-          redOffset={0}                // RGB channel offsets for chromatic aberration
-          greenOffset={12}
-          blueOffset={24}
-          xChannel="R"                 // Use red channel for X displacement
-          yChannel="G"                 // Use green channel for Y displacement
-          mixBlendMode="difference"    // Blend mode for gradient mixing
-          borderRadius={16}            // Rounded corners
-          borderWidth={0.09}           // Border width for edge distortion
+        <div 
+          className="relative w-full p-8 md:p-10 rounded-2xl border-2 border-[#2762AD]/30 hover:border-[#2762AD]/70 transition-all duration-500 group cursor-pointer overflow-hidden"
+          style={{
+            background: 'rgba(39, 98, 173, 0.08)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            boxShadow: `
+              0 8px 32px 0 rgba(39, 98, 173, 0.15),
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+              0 0 0 1px rgba(39, 98, 173, 0.1)
+            `,
+          }}
         >
-          {/* Single direct child with all content - critical for proper distortion */}
-          <div className="flex flex-col space-y-6 w-full h-full p-8 md:p-10">
+          {/* Subtle gradient overlay for depth */}
+          <div 
+            className="absolute inset-0 opacity-50 pointer-events-none rounded-2xl"
+            style={{
+              background: `radial-gradient(circle at 50% 0%, ${event.color || '#2762AD'}15, transparent 70%)`,
+            }}
+          />
+          
+          {/* Glass shine effect */}
+          <div 
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%)',
+            }}
+          />
+
+          <div className="relative z-10 flex flex-col space-y-6">
             {/* Year badge */}
             <motion.div
               className="inline-flex items-center self-start"
@@ -316,7 +323,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
               transition={{ duration: 0.4 }}
             >
               <span 
-                className="px-4 py-2 rounded-full text-sm md:text-base font-bold tracking-wider border-2"
+                className="px-4 py-2 rounded-full text-sm md:text-base font-bold tracking-wider border-2 backdrop-blur-sm"
                 style={{
                   background: `linear-gradient(135deg, ${event.color || '#2762AD'}30, ${event.color || '#183D89'}15)`,
                   borderColor: `${event.color || '#2762AD'}60`,
@@ -329,13 +336,13 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
             </motion.div>
 
             {/* Title */}
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#E8F1FF] group-hover:text-white transition-colors leading-tight">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#E8F1FF] group-hover:text-white transition-colors leading-tight drop-shadow-lg">
               {event.title}
             </h3>
 
             {/* Decorative divider */}
             <motion.div
-              className="h-1 w-20 md:w-24 rounded-full"
+              className="h-1 w-20 md:w-24 rounded-full shadow-lg"
               style={{
                 background: `linear-gradient(90deg, ${event.color || '#2762AD'}, transparent)`,
                 boxShadow: `0 0 10px ${event.color || '#2762AD'}80`,
@@ -347,11 +354,11 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
             />
 
             {/* Description */}
-            <p className="text-base md:text-lg text-[#E8F1FF]/90 group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow">
+            <p className="text-base md:text-lg text-[#E8F1FF]/90 group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
               {event.description}
             </p>
           </div>
-        </GlassSurface>
+        </div>
       </motion.div>
     </div>
   );
