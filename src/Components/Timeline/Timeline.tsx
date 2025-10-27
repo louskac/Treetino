@@ -155,8 +155,8 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
         const defaultHeight = image.size?.height || '400px';
         
         const parallaxMultiplier = 
-          image.parallaxSpeed === 'fast' ? 2 :
-          image.parallaxSpeed === 'medium' ? 1.5 :
+          image.parallaxSpeed === 'fast' ? 3 :
+          image.parallaxSpeed === 'medium' ? 2 :
           1;
         
         const customImageY = useTransform(scrollYProgress, [0, 1], [50 * parallaxMultiplier, -50 * parallaxMultiplier]);

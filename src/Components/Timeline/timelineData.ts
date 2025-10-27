@@ -69,7 +69,7 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/established.JPG",
+        src: "/timeline/established.jpg",
         alt: "Legal framework",
         caption: "Founders showing of solar leaf",
         overlayText: "Founders",
@@ -106,7 +106,7 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/development.jpg",
+        src: "/timeline/dev.jpg",
         alt: "Solar and wind tech",
         caption: "Transparent windturbines",
         overlayText: "Development",
@@ -173,7 +173,7 @@ export const treetinoTimeline = [
         position: "right",
         offsetX: "20%",
         offsetY: "20%",
-        parallaxSpeed: "medium",
+        parallaxSpeed: "slow",
         size: {
           width: "340px",
           height: "390px"
@@ -203,14 +203,14 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/prototype.jpg",
+        src: "/timeline/development.jpg",
         alt: "Prototype testing",
-        caption: "Field validation",
+        caption: "Transparent turbines material for optimal solar production",
         overlayText: "Testing",
         position: "left",
-        offsetX: "3%",
+        offsetX: "-10%",
         offsetY: "0%",
-        parallaxSpeed: "medium",
+        parallaxSpeed: "fast",
         size: {
           width: "350px",
           height: "400px"
@@ -219,12 +219,12 @@ export const treetinoTimeline = [
       {
         src: "/timeline/team.jpg",
         alt: "Performance optimization",
-        caption: "Team catching a quick break between pitches",
+        caption: "Team catching a quick break between testing runs",
         overlayText: "Team",
         position: "right",
         offsetX: "4%",
         offsetY: "-25%",
-        parallaxSpeed: "fast",
+        parallaxSpeed: "slow",
         size: {
           width: "320px",
           height: "370px"
@@ -240,14 +240,14 @@ export const treetinoTimeline = [
     color: color.middle,
     images: [
       {
-        src: "/timeline/government.jpeg",
+        src: "/timeline/government.jpg",
         alt: "Blockchain platform",
         caption: "DeFi launch",
         overlayText: "Blockchain",
         position: "right",
-        offsetX: "4%",
-        offsetY: "20%",
-        parallaxSpeed: "slow",
+        offsetX: "-10%",
+        offsetY: "0%",
+        parallaxSpeed: "fast",
         size: {
           width: "340px",
           height: "390px"
@@ -261,7 +261,7 @@ export const treetinoTimeline = [
         position: "left",
         offsetX: "3%",
         offsetY: "-22%",
-        parallaxSpeed: "fast",
+        parallaxSpeed: "slow",
         size: {
           width: "330px",
           height: "380px"
@@ -283,7 +283,7 @@ export const treetinoTimeline = [
         overlayText: "Expansion",
         position: "left",
         offsetX: "3%",
-        offsetY: "0%",
+        offsetY: "20%",
         parallaxSpeed: "medium",
         size: {
           width: "340px",
@@ -291,14 +291,14 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/government.jpeg",
+        src: "/timeline/government.jpg",
         alt: "Infrastructure network",
-        caption: "Network establishment",
-        overlayText: "Infrastructure",
+        caption: "As presented at Demo Days",
+        overlayText: "Model",
         position: "right",
         offsetX: "5%",
-        offsetY: "24%",
-        parallaxSpeed: "fast",
+        offsetY: "-24%",
+        parallaxSpeed: "medium",
         size: {
           width: "310px",
           height: "360px"

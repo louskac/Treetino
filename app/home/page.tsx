@@ -62,7 +62,7 @@ export default function Home() {
       {/* Liquid Ether Background */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
-          colors={['#2762AD', '#2762AD', '#2762AD']}
+          colors={['#fff', '#7496C2', '#2762AD']}
           mouseForce={10}
           cursorSize={150}
           isViscous={false}

@@ -105,6 +105,9 @@
   border-radius: var(--card-radius);
   transform: translate3d(0, 0, 0.1px);
   pointer-events: none;
+  -webkit-transform: translate3d(0, 0, 0.1px); /* Add */
+  backface-visibility: hidden; /* Add */
+  -webkit-backface-visibility: hidden; /* Add */
 }
 
 .pc-inside {
@@ -253,14 +256,24 @@
 .pc-avatar-content {
   mix-blend-mode: screen;
   overflow: hidden;
+  isolation: isolate; /* Add this */
 }
 
 .pc-avatar-content .avatar {
   width: 100%;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) scale(1);
-  bottom: -15%; /* Changed from 2px - this percentage keeps it positioned at bottom */
+  transform: translateX(-50%) translateZ(0);
+  bottom: -15%;
+  opacity: 1;
+  will-change: opacity;
+  -webkit-transform: translateX(-50%) translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.pc-card:hover .pc-avatar-content .avatar,
+.pc-card.active .pc-avatar-content .avatar {
   opacity: calc(1.75 - var(--pointer-from-center));
 }
 

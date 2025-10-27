@@ -8,7 +8,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 const springValues = {
   damping: 30,
   stiffness: 100,
-  mass: 2,
+  mass: 1, // Reduced from 2 for faster settling
 };
 
 /**
@@ -66,8 +66,15 @@ export default function TiltedCard({
     const offsetX = e.clientX - rect.left - rect.width / 2;
     const offsetY = e.clientY - rect.top - rect.height / 2;
 
-    const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude;
-    const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude;
+    // Clamp the rotation values to prevent extreme tilting
+    const rotationX = Math.max(
+      -rotateAmplitude,
+      Math.min(rotateAmplitude, (offsetY / (rect.height / 2)) * -rotateAmplitude)
+    );
+    const rotationY = Math.max(
+      -rotateAmplitude,
+      Math.min(rotateAmplitude, (offsetX / (rect.width / 2)) * rotateAmplitude)
+    );
 
     rotateX.set(rotationX);
     rotateY.set(rotationY);
@@ -75,7 +82,8 @@ export default function TiltedCard({
     x.set(e.clientX - rect.left);
     y.set(e.clientY - rect.top);
 
-    const velocityY = offsetY - lastY;
+    // Clamp velocity to prevent extreme caption rotation
+    const velocityY = Math.max(-50, Math.min(50, offsetY - lastY));
     rotateFigcaption.set(-velocityY * 0.6);
     setLastY(offsetY);
   }
