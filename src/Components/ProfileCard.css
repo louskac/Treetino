@@ -263,13 +263,12 @@
   width: 100%;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) translateZ(0);
   bottom: -15%;
-  opacity: 1;
-  will-change: opacity;
-  -webkit-transform: translateX(-50%) translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  transform: translateX(-50%); /* ONLY translateX, no translate3d */
+  opacity: calc(1.75 - var(--pointer-from-center));
+  display: block; /* Override grid */
+  grid-area: auto; /* Override grid-area */
+  pointer-events: none;
 }
 
 .pc-card:hover .pc-avatar-content .avatar,

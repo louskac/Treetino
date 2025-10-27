@@ -55,7 +55,7 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/founded.jpg",
+        src: "/timeline/founded.JPG",
         alt: "Company foundation",
         caption: "Treetino s.r.o. establishment",
         overlayText: "Founded",
@@ -69,7 +69,7 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/established.jpg",
+        src: "/timeline/established.JPG",
         alt: "Legal framework",
         caption: "Founders showing of solar leaf",
         overlayText: "Founders",
@@ -92,7 +92,7 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/innovation.jpg",
+        src: "/timeline/innovation.JPG",
         alt: "Technology research",
         caption: "Founders pitching",
         overlayText: "Innovation",
@@ -129,7 +129,7 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/sustainability.jpg",
+        src: "/timeline/sustainability.JPG",
         alt: "Environmental assessment",
         caption: "Leafs have aluminium frame that protects them",
         overlayText: "Sustainability",
@@ -166,7 +166,7 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/investment.png",
+        src: "/timeline/investment.PNG",
         alt: "Government partnership",
         caption: "Czech Invest backing",
         overlayText: "Investment",
