@@ -4,23 +4,23 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
-import { getIcon } from './timelineData'; // Import the getIcon helper
+import { getIcon } from './timelineData';
 
 export type TimelineEvent = {
   year: string;
   title: string;
   description: string;
-  icon?: string; // Changed from React.ReactNode to string
+  icon?: string;
   color?: string;
   images?: Array<{
     src: string;
     alt?: string;
     caption?: string;
     overlayText?: string;
-    position?: string; // Changed from union type to string
+    position?: string;
     offsetX?: string;
     offsetY?: string;
-    parallaxSpeed?: string; // Changed from union type to string
+    parallaxSpeed?: string;
     size?: {
       width: string;
       height: string;
@@ -142,7 +142,6 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
     return () => clearTimeout(timer)
   }, [])
 
-  // Get the icon component from the string name
   const IconComponent = event.icon ? getIcon(event.icon) : null;
 
   return (
@@ -157,9 +156,9 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
         const defaultHeight = image.size?.height || '400px';
         
         const parallaxMultiplier = 
-          image.parallaxSpeed === 'fast' ? 1.5 :
-          image.parallaxSpeed === 'medium' ? 1.0 :
-          0.5;
+          image.parallaxSpeed === 'fast' ? 2 :
+          image.parallaxSpeed === 'medium' ? 1.5 :
+          1;
         
         const customImageY = useTransform(scrollYProgress, [0, 1], [50 * parallaxMultiplier, -50 * parallaxMultiplier]);
 
@@ -269,7 +268,6 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
               boxShadow: `0 0 30px ${event.color || '#2762AD'}90, 0 0 60px ${event.color || '#2762AD'}40`,
             }}
           >
-            {/* Render the icon component */}
             {IconComponent && (
               <IconComponent 
                 className="w-8 h-8 md:w-10 md:h-10 text-white"
@@ -280,7 +278,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
         </motion.div>
       </motion.div>
 
-      {/* Content card */}
+      {/* Content card - Using GlassSurface with OPTIMAL settings for liquid glass effect */}
       <motion.div
         className={`w-full pl-20 pr-4 md:pr-0 md:pl-0 md:w-[45%] relative z-10 ${
           isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
@@ -289,14 +287,26 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
       >
         <GlassSurface
           height="auto"
-          className="w-full p-8 md:p-10 border-2 border-[#2762AD]/30 hover:border-[#2762AD]/70 transition-all duration-500 group cursor-pointer"
-          blur={3}
-          displace={0.7}
-          backgroundOpacity={0.1}
-          brightness={20}
-          opacity={0.85}
+          className="w-full border-2 border-[#2762AD]/30 hover:border-[#2762AD]/70 transition-all duration-500 group cursor-pointer"
+          // These settings maximize the liquid glass distortion effect
+          blur={15}                    // Increased blur for stronger glass effect
+          displace={1.2}               // Higher displacement for more distortion
+          brightness={30}              // Lower brightness for darker, more premium glass
+          opacity={0.88}               // Slightly less opaque for better transparency
+          backgroundOpacity={0.12}     // Subtle background tint
+          saturation={1.4}             // Enhanced color saturation through glass
+          distortionScale={-200}       // Stronger distortion scale
+          redOffset={0}                // RGB channel offsets for chromatic aberration
+          greenOffset={12}
+          blueOffset={24}
+          xChannel="R"                 // Use red channel for X displacement
+          yChannel="G"                 // Use green channel for Y displacement
+          mixBlendMode="difference"    // Blend mode for gradient mixing
+          borderRadius={16}            // Rounded corners
+          borderWidth={0.09}           // Border width for edge distortion
         >
-          <div className="flex flex-col space-y-6">
+          {/* Single direct child with all content - critical for proper distortion */}
+          <div className="flex flex-col space-y-6 w-full h-full p-8 md:p-10">
             {/* Year badge */}
             <motion.div
               className="inline-flex items-center self-start"
@@ -308,7 +318,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
               <span 
                 className="px-4 py-2 rounded-full text-sm md:text-base font-bold tracking-wider border-2"
                 style={{
-                  background: `linear-gradient(135deg, ${event.color || '#2762AD'}20, ${event.color || '#183D89'}10)`,
+                  background: `linear-gradient(135deg, ${event.color || '#2762AD'}30, ${event.color || '#183D89'}15)`,
                   borderColor: `${event.color || '#2762AD'}60`,
                   color: '#E8F1FF',
                   boxShadow: `0 0 20px ${event.color || '#2762AD'}30`,
@@ -328,6 +338,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
               className="h-1 w-20 md:w-24 rounded-full"
               style={{
                 background: `linear-gradient(90deg, ${event.color || '#2762AD'}, transparent)`,
+                boxShadow: `0 0 10px ${event.color || '#2762AD'}80`,
               }}
               initial={{ width: 0 }}
               whileInView={{ width: '6rem' }}
@@ -336,7 +347,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
             />
 
             {/* Description */}
-            <p className="text-base md:text-lg text-[#E8F1FF]/80 group-hover:text-[#E8F1FF]/95 transition-colors leading-relaxed flex-grow">
+            <p className="text-base md:text-lg text-[#E8F1FF]/90 group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow">
               {event.description}
             </p>
           </div>

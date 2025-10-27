@@ -56,25 +56,27 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
-      <PerformanceMonitor />
+
+      { process.env.NODE_ENV === 'development' && <PerformanceMonitor /> }
+
       {/* Liquid Ether Background */}
       <div className="absolute inset-0 z-0">
         <LiquidEther
           colors={['#2762AD', '#2762AD', '#2762AD']}
-          mouseForce={20}
-          cursorSize={300}
+          mouseForce={10}
+          cursorSize={150}
           isViscous={false}
           viscous={30}
-          iterationsViscous={32}
-          iterationsPoisson={32}
-          resolution={0.5}
+          iterationsViscous={16}
+          iterationsPoisson={16}
+          resolution={0.2}
           isBounce={false}
           autoDemo={true}
           autoSpeed={0.5}
-          autoIntensity={2.2}
-          takeoverDuration={0.25}
-          autoResumeDelay={3000}
-          autoRampDuration={0.6}
+          autoIntensity={5}
+          takeoverDuration={0.5}
+          autoResumeDelay={2000}
+          autoRampDuration={0.8}
         />
       </div>
 
@@ -271,6 +273,26 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Timeline Section - Our Journey */}
+      <div className="relative z-10 py-80 px-6">
+        <div className="max-w-7xl w-full mx-auto">
+                
+          {/* Section Header */}
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Journey</span>
+            </h2>
+                  
+            <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
+              From vision to reality - the milestones that shaped Treetino
+            </p>
+          </div>
+      
+          {/* Timeline Component */}
+          <Timeline events={treetinoTimeline} />
+        </div>
+      </div>
+
       {/* Team Section - 3x2 Grid of Profile Cards */}
       <div className="relative z-10 py-20 px-6">
         <div className="max-w-7xl w-full mx-auto">
@@ -302,6 +324,7 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => console.log('Contact Dominik')}
+                showBehindGradient={false}
               />
             </div>
 
@@ -317,6 +340,7 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => console.log('Contact CTO')}
+                showBehindGradient={false}
               />
             </div>
 
@@ -332,6 +356,7 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => console.log('Contact Engineer')}
+                showBehindGradient={false}
               />
             </div>
 
@@ -348,6 +373,7 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => console.log('Contact Designer')}
+                showBehindGradient={false}
               />
             </div>
 
@@ -363,6 +389,7 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => console.log('Contact Researcher')}
+                showBehindGradient={false}
               />
             </div>
 
@@ -378,6 +405,7 @@ export default function Home() {
                 enableTilt={true}
                 enableMobileTilt={false}
                 onContactClick={() => console.log('Contact BD')}
+                showBehindGradient={true}
               />
             </div>
           </div>
