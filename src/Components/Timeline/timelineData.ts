@@ -217,7 +217,7 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/team.jpg",
+        src: "/timeline/team.JPG",
         alt: "Performance optimization",
         caption: "Team catching a quick break between testing runs",
         overlayText: "Team",

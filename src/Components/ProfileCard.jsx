@@ -51,7 +51,7 @@ const ProfileCardComponent = ({
   grainUrl = '<Placeholder for grain URL>',
   behindGradient,
   innerGradient,
-  showBehindGradient = false,
+  showBehindGradient = true,
   className = '',
   enableTilt = true,
   enableMobileTilt = false,
