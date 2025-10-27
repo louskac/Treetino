@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -9,8 +8,18 @@ import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
-import ProfileCard from '@/Components/ProfileCard'
+import ProfileCard from '@/Components/ProfileCard/ProfileCard'
 import PerformanceMonitor from '@/Components/PerformanceMonitor';
+import GlassIcons from '@/Components/GlassIcons/GlassIcons';
+
+import { 
+  GiWindTurbine,      // Wind turbine icon
+  GiSolidLeaf,       // Solar panel icon  
+  GiElectric,         // Lightning/electricity icon
+  GiResize,           // Size/footprint icon
+  GiFootprint,        // Footprint icon
+  GiHouse             // House/household icon
+} from 'react-icons/gi';
 
 import Timeline from '@/Components/Timeline/Timeline';
 import { treetinoTimeline } from '@/Components/Timeline/timelineData';
@@ -33,6 +42,25 @@ const socialItems: MenuItem[] = [
   { label: 'Telegram', ariaLabel: 'Join our Telegram', link: 'https://t.me/treetino' },
   { label: 'LinkedIn', ariaLabel: 'Visit our LinkedIn', link: 'https://linkedin.com/company/treetino' }
 ];
+
+const items = [
+  { icon: <GiSolidLeaf />, color: '#2762AD', label: '300' },
+  { icon: <GiWindTurbine />, color: '#183D89', label: '12' },
+  { icon: <GiElectric />, color: '#2A293A', label: '49 kW' },
+  { icon: <GiResize />, color: '#2762AD', label: '400 m2' },
+  { icon: <GiFootprint />, color: '#183D89', label: '1m2' },
+  { icon: <GiHouse />, color: '#2A293A', label: '60' },
+];
+
+const descriptions = [
+  'Of our state-of-the art solar leafs',
+  'Transparent windturbines producing power even at night',
+  'Perfectly picked to fit goverment subsidies limits',
+  'Saved space equivalent to two tenis courts',
+  'Ground space and picked to fit European no-license construction requirements',
+  'Powering up to 60 modern households with combined solar and wind technology'
+];
+
 
 export default function Home() {
   // Create a ref for the intro section to track scroll
@@ -158,7 +186,7 @@ export default function Home() {
       </div>
 
       {/* Intro Section */}
-      <div ref={introRef} className="relative z-10 flex min-h-[100vh] items-center justify-center">
+      <div ref={introRef} className="relative z-10 flex min-h-[80vh] items-center justify-center">
         <div className='max-w-7xl w-full mx-auto px-6 sticky top-1/3 -translate-y-1/3'>
           <div className="relative flex items-center justify-center">
             
@@ -273,12 +301,27 @@ export default function Home() {
         </div>
       </div>
 
+      {/* 6 main numbers */}       
+      <div className='relative mt-80'>
+        {/* Section Header */}
+        <div className="text-center mb-12 md:mb-32 space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
+            Main <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Numbers</span>
+          </h2>
+                  
+          <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
+            The most important information about our product
+          </p>
+        </div>
+        <GlassIcons items={items} descriptions={descriptions} className="custom-class"/>        
+      </div>
+
       {/* Timeline Section - Our Journey */}
       <div className="relative z-10 py-80 px-6">
         <div className="max-w-7xl w-full mx-auto">
                 
           {/* Section Header */}
-          <div className="text-center mb-16 space-y-4">
+          <div className="text-center mb-12 md:mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Journey</span>
             </h2>

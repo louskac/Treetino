@@ -1,0 +1,137 @@
+.icon-btns {
+  display: grid;
+  grid-gap: 2em; /* REDUCED from 3em */
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  padding: 2em 0; /* REDUCED from 3em */
+  overflow: visible;
+  max-width: 1400px;
+}
+
+.icon-btn {
+  background-color: transparent;
+  outline: none;
+  position: relative;
+  width: 8em;
+  height: 8em;
+  perspective: 24em;
+  transform-style: preserve-3d;
+  -webkit-tap-highlight-color: transparent;
+  margin: 0 auto;
+  padding-bottom: 3em;
+}
+
+.icon-btn__back,
+.icon-btn__front,
+.icon-btn__label {
+  transition:
+    opacity 0.3s cubic-bezier(0.83, 0, 0.17, 1),
+    transform 0.3s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+.icon-btn__back,
+.icon-btn__front {
+  border-radius: 1.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-btn__back {
+  box-shadow: 0.5em -0.5em 0.75em hsla(223, 10%, 10%, 0.15);
+  display: block;
+  transform: rotate(15deg);
+  transform-origin: 100% 100%;
+}
+
+.icon-btn__front {
+  background-color: hsla(0, 0%, 100%, 0.15);
+  box-shadow: 0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset;
+  backdrop-filter: blur(0.75em);
+  -webkit-backdrop-filter: blur(0.75em);
+  display: flex;
+  transform-origin: 80% 50%;
+}
+
+.icon-btn__icon {
+  margin: auto;
+  width: 3em;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+}
+
+.icon-btn__label {
+  font-size: 2em;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.5;
+  opacity: 0;
+  position: absolute;
+  top: calc(100% + 0.5em);
+  right: 0;
+  left: 0;
+  transform: translateY(0);
+  color: #E8F1FF;
+  pointer-events: none;
+}
+
+.icon-btn:focus-visible .icon-btn__back,
+.icon-btn:hover .icon-btn__back {
+  transform: rotate(25deg) translate3d(-0.5em, -0.5em, 0.5em);
+}
+
+.icon-btn:focus-visible .icon-btn__front,
+.icon-btn:hover .icon-btn__front {
+  transform: translateZ(2em);
+}
+
+.icon-btn:focus-visible .icon-btn__label,
+.icon-btn:hover .icon-btn__label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .icon-btns {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10em 3em;
+  }
+}
+
+@media (max-width: 767px) {
+  .icon-btn {
+    width: 7em;
+    height: 7em;
+    padding-bottom: 2.5em;
+  }
+  
+  .icon-btn__label {
+    font-size: 1.5em;
+  }
+  
+  .icon-btns {
+    grid-gap: 5em 2em;
+  }
+  
+  /* Mobile color ordering - 2 light, 2 middle, 2 dark */
+  .icon-btn:nth-child(1),
+  .icon-btn:nth-child(2) {
+    /* Light colors will be applied via inline styles */
+  }
+  
+  .icon-btn:nth-child(3),
+  .icon-btn:nth-child(4) {
+    /* Middle colors will be applied via inline styles */
+  }
+  
+  .icon-btn:nth-child(5),
+  .icon-btn:nth-child(6) {
+    /* Dark colors will be applied via inline styles */
+  }
+}
