@@ -9,7 +9,7 @@ import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
-import ProfileCard from '@/Components/ProfileCard'
+import ProfileCard from '@/Components/ProfileCard/ProfileCard'
 import PerformanceMonitor from '@/Components/PerformanceMonitor';
 
 import Timeline from '@/Components/Timeline/Timeline';
