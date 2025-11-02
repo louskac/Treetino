@@ -2,8 +2,13 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import dynamic from 'next/dynamic';
 
-import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
+const ColorBends = dynamic(
+  () => import('@/Backgrounds/ColorBends/ColorBends'),
+  { ssr: false }
+);
+
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import ScrollReveal from '@/TextAnimations/ScrollReveal/ScrollReveal';
@@ -11,6 +16,7 @@ import TiltedCard from '@/Components/TiltedCard/TiltedCard';
 import ProfileCard from '@/Components/ProfileCard/ProfileCard'
 import PerformanceMonitor from '@/Components/PerformanceMonitor';
 import GlassIcons from '@/Components/GlassIcons/GlassIcons';
+import Stepper, { Step } from '@/Components/Stepper/Stepper';
 
 import { 
   GiWindTurbine,      // Wind turbine icon
@@ -88,23 +94,18 @@ export default function Home() {
       { process.env.NODE_ENV === 'development' && <PerformanceMonitor /> }
 
       {/* Liquid Ether Background */}
-      <div className="absolute inset-0 z-0">
-        <LiquidEther
-          colors={['#fff', '#7496C2', '#2762AD']}
-          mouseForce={10}
-          cursorSize={150}
-          isViscous={false}
-          viscous={30}
-          iterationsViscous={16}
-          iterationsPoisson={16}
-          resolution={0.2}
-          isBounce={false}
-          autoDemo={true}
-          autoSpeed={0.5}
-          autoIntensity={5}
-          takeoverDuration={0.5}
-          autoResumeDelay={2000}
-          autoRampDuration={0.8}
+      <div className="fixed inset-0 z-0">
+        <ColorBends
+          colors={['#2762AD', '#183D89', '#2A293A']}
+          rotation={1}
+          speed={0.5}
+          scale={0.5}
+          frequency={2}
+          warpStrength={1}
+          mouseInfluence={0.3}
+          parallax={1}
+          noise={0.08}
+          transparent
         />
       </div>
 
@@ -148,7 +149,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 pointer-events-auto">
             <a
               href="/grant.pdf"
-              className="px-8 py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px]"
+              className="px-8 py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px] h-14 flex items-center justify-center"
             >
               Government funded
             </a>
@@ -158,8 +159,24 @@ export default function Home() {
               className="relative group overflow-hidden rounded-full min-w-[180px]"
             >
               <GlassSurface 
-                height={"56"}
-                className="px-8 py-4 flex items-center justify-center border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all w-full"
+                width={180}
+                height={56}
+                borderRadius={28}
+                borderWidth={0.1}
+                brightness={50}
+                opacity={0.93}
+                blur={12}
+                displace={0.7}
+                backgroundOpacity={0.15}
+                saturation={1.2}
+                distortionScale={-180}
+                redOffset={0}
+                greenOffset={10}
+                blueOffset={20}
+                xChannel="R"
+                yChannel="G"
+                mixBlendMode="difference"
+                className="border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all"
               >
                 <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors">
                   Whitepaper
@@ -452,6 +469,12 @@ export default function Home() {
               />
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Contact minimal */}
+      <div className="relative z-10 py-20 px-6">
+        <div className="max-w-7xl w-full mx-auto">
         </div>
       </div>
     </main>

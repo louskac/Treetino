@@ -60,8 +60,8 @@ export const treetinoTimeline = [
         caption: "Treetino s.r.o. establishment",
         overlayText: "Founded",
         position: "left",
-        offsetX: "-2%",
-        offsetY: "-55%",
+        offsetX: "-15%",
+        offsetY: "-65%",
         parallaxSpeed: "fast",
         size: {
           width: "320px",
@@ -92,7 +92,7 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/innovation.JPG",
+        src: "/timeline/dev.jpg",
         alt: "Technology research",
         caption: "Founders pitching",
         overlayText: "Innovation",
@@ -106,13 +106,13 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/dev.jpg",
+        src: "/timeline/innovation.JPG",
         alt: "Solar and wind tech",
         caption: "Transparent windturbines",
         overlayText: "Development",
         position: "right",
-        offsetX: "-15%",
-        offsetY: "-30%",
+        offsetX: "-22%",
+        offsetY: "-80%",
         parallaxSpeed: "fast",
         size: {
           width: "290px",
@@ -134,8 +134,8 @@ export const treetinoTimeline = [
         caption: "Leafs have aluminium frame that protects them",
         overlayText: "Sustainability",
         position: "left",
-        offsetX: "20%",
-        offsetY: "25%",
+        offsetX: "30%",
+        offsetY: "40%",
         parallaxSpeed: "slow",
         size: {
           width: "310px",
@@ -171,8 +171,8 @@ export const treetinoTimeline = [
         caption: "Czech Invest backing",
         overlayText: "Investment",
         position: "right",
-        offsetX: "20%",
-        offsetY: "20%",
+        offsetX: "30%",
+        offsetY: "30%",
         parallaxSpeed: "slow",
         size: {
           width: "340px",
@@ -203,13 +203,13 @@ export const treetinoTimeline = [
     color: color.light,
     images: [
       {
-        src: "/timeline/development.jpg",
+        src: "/timeline/team.JPG",
         alt: "Prototype testing",
         caption: "Transparent turbines material for optimal solar production",
         overlayText: "Testing",
         position: "left",
-        offsetX: "-10%",
-        offsetY: "0%",
+        offsetX: "-20%",
+        offsetY: "20%",
         parallaxSpeed: "fast",
         size: {
           width: "350px",
@@ -217,7 +217,7 @@ export const treetinoTimeline = [
         }
       },
       {
-        src: "/timeline/team.JPG",
+        src: "/timeline/development.jpg",
         alt: "Performance optimization",
         caption: "Team catching a quick break between testing runs",
         overlayText: "Team",
@@ -245,8 +245,8 @@ export const treetinoTimeline = [
         caption: "DeFi launch",
         overlayText: "Blockchain",
         position: "right",
-        offsetX: "-10%",
-        offsetY: "0%",
+        offsetX: "-20%",
+        offsetY: "40%",
         parallaxSpeed: "fast",
         size: {
           width: "340px",
@@ -282,8 +282,8 @@ export const treetinoTimeline = [
         caption: "Market deployment",
         overlayText: "Expansion",
         position: "left",
-        offsetX: "3%",
-        offsetY: "20%",
+        offsetX: "-18%",
+        offsetY: "28%",
         parallaxSpeed: "medium",
         size: {
           width: "340px",
@@ -319,8 +319,8 @@ export const treetinoTimeline = [
         caption: "100+ trees deployment",
         overlayText: "Forest",
         position: "right",
-        offsetX: "2%",
-        offsetY: "-20%",
+        offsetX: "-15%",
+        offsetY: "-40%",
         parallaxSpeed: "fast",
         size: {
           width: "350px",

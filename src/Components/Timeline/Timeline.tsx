@@ -3,7 +3,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 import TiltedCard from '@/Components/TiltedCard/TiltedCard';
+import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import { getIcon } from './timelineData';
+import './Timeline.css';
 
 export type TimelineEvent = {
   year: string;
@@ -277,87 +279,101 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
         </motion.div>
       </motion.div>
 
-      {/* Content card with PROPER glass morphism effect */}
+      {/* Content card with GlassSurface */}
       <motion.div
         className={`w-full pl-20 pr-4 md:pr-0 md:pl-0 md:w-[45%] relative z-10 ${
           isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
         }`}
         style={{ opacity, x, scale }}
       >
-        <div 
-          className="relative w-full p-8 md:p-10 rounded-2xl border-2 border-[#2762AD]/30 hover:border-[#2762AD]/70 transition-all duration-500 group cursor-pointer overflow-hidden"
-          style={{
-            background: 'rgba(39, 98, 173, 0.08)',
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-            boxShadow: `
-              0 8px 32px 0 rgba(39, 98, 173, 0.15),
-              inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
-              0 0 0 1px rgba(39, 98, 173, 0.1)
-            `,
-          }}
-        >
-          {/* Subtle gradient overlay for depth */}
-          <div 
-            className="absolute inset-0 opacity-50 pointer-events-none rounded-2xl"
+        <div className="relative w-full">
+          <GlassSurface
+            width={600}
+            height={400}
+            borderRadius={16}
+            borderWidth={0.08}
+            brightness={15}
+            opacity={0.15}
+            blur={15}
+            displace={0.5}
+            backgroundOpacity={0.08}
+            saturation={1.3}
+            distortionScale={-180}
+            redOffset={0}
+            greenOffset={8}
+            blueOffset={16}
+            xChannel="R"
+            yChannel="G"
+            mixBlendMode="difference"
+            className="group cursor-pointer transition-all duration-500 hover:shadow-2xl timeline-glass-card"
             style={{
-              background: `radial-gradient(circle at 50% 0%, ${event.color || '#2762AD'}15, transparent 70%)`,
+              boxShadow: `0 8px 32px 0 rgba(39, 98, 173, 0.15), 0 0 0 2px rgba(39, 98, 173, 0.3)`,
             }}
-          />
-          
-          {/* Glass shine effect */}
-          <div 
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%)',
-            }}
-          />
-
-          <div className="relative z-10 flex flex-col space-y-6">
-            {/* Year badge */}
-            <motion.div
-              className="inline-flex items-center self-start"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-            >
-              <span 
-                className="px-4 py-2 rounded-full text-sm md:text-base font-bold tracking-wider border-2 backdrop-blur-sm"
+          >
+            <div className="relative w-full h-full p-8 md:p-10">
+              {/* Subtle gradient overlay for depth */}
+              <div 
+                className="absolute inset-0 opacity-50 pointer-events-none rounded-2xl"
                 style={{
-                  background: `linear-gradient(135deg, ${event.color || '#2762AD'}30, ${event.color || '#183D89'}15)`,
-                  borderColor: `${event.color || '#2762AD'}60`,
-                  color: '#E8F1FF',
-                  boxShadow: `0 0 20px ${event.color || '#2762AD'}30`,
+                  background: `radial-gradient(circle at 50% 0%, ${event.color || '#2762AD'}15, transparent 70%)`,
                 }}
-              >
-                {event.year}
-              </span>
-            </motion.div>
+              />
+              
+              {/* Glass shine effect on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%)',
+                }}
+              />
 
-            {/* Title */}
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#E8F1FF] group-hover:text-white transition-colors leading-tight drop-shadow-lg">
-              {event.title}
-            </h3>
+              <div className="relative z-10 flex flex-col space-y-6 h-full">
+                {/* Year badge */}
+                <motion.div
+                  className="inline-flex items-center self-start"
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <span 
+                    className="px-4 py-2 rounded-full text-sm md:text-base font-bold tracking-wider border-2 backdrop-blur-sm"
+                    style={{
+                      background: `linear-gradient(135deg, ${event.color || '#2762AD'}30, ${event.color || '#183D89'}15)`,
+                      borderColor: `${event.color || '#2762AD'}60`,
+                      color: '#E8F1FF',
+                      boxShadow: `0 0 20px ${event.color || '#2762AD'}30`,
+                    }}
+                  >
+                    {event.year}
+                  </span>
+                </motion.div>
 
-            {/* Decorative divider */}
-            <motion.div
-              className="h-1 w-20 md:w-24 rounded-full shadow-lg"
-              style={{
-                background: `linear-gradient(90deg, ${event.color || '#2762AD'}, transparent)`,
-                boxShadow: `0 0 10px ${event.color || '#2762AD'}80`,
-              }}
-              initial={{ width: 0 }}
-              whileInView={{ width: '6rem' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            />
+                {/* Title */}
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#E8F1FF] group-hover:text-white transition-colors leading-tight drop-shadow-lg">
+                  {event.title}
+                </h3>
 
-            {/* Description */}
-            <p className="text-base md:text-lg text-[#E8F1FF]/90 group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
-              {event.description}
-            </p>
-          </div>
+                {/* Decorative divider */}
+                <motion.div
+                  className="h-1 w-20 md:w-24 rounded-full shadow-lg"
+                  style={{
+                    background: `linear-gradient(90deg, ${event.color || '#2762AD'}, transparent)`,
+                    boxShadow: `0 0 10px ${event.color || '#2762AD'}80`,
+                  }}
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '6rem' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                />
+
+                {/* Description */}
+                <p className="text-base md:text-lg text-[#E8F1FF]/90 group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
+                  {event.description}
+                </p>
+              </div>
+            </div>
+          </GlassSurface>
         </div>
       </motion.div>
     </div>

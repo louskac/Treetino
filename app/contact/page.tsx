@@ -1,9 +1,15 @@
 "use client";
 
 import { useState } from 'react';
-import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
+import dynamic from 'next/dynamic';
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
+
+// Dynamic import for LiquidEther with SSR disabled
+const LiquidEther = dynamic(
+  () => import('@/Backgrounds/LiquidEther/LiquidEther'),
+  { ssr: false }
+);
 
 type MenuItem = {
   label: string;

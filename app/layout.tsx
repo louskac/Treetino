@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ReactBits Playground",
-  description: "Experimenting with ReactBits components",
+  title: "Treetino",
+  description: "The future of enrgy, rooted in sustainability",
 };
 
 export default function RootLayout({

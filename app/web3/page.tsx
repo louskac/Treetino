@@ -1,6 +1,12 @@
 "use client";
 
-import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
+import dynamic from 'next/dynamic';
+
+const LiquidEther = dynamic(
+  () => import('@/Backgrounds/LiquidEther/LiquidEther'),
+  { ssr: false }
+);
+
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 
@@ -97,7 +103,6 @@ export default function Web3Page() {
               className="relative group overflow-hidden rounded-full min-w-[180px]"
             >
               <GlassSurface 
-                height={"56"}
                 className="px-8 py-4 flex items-center justify-center border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all w-full"
               >
                 <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors">

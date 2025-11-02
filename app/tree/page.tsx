@@ -1,6 +1,12 @@
 "use client";
 
-import LiquidEther from '@/Backgrounds/LiquidEther/LiquidEther';
+import dynamic from 'next/dynamic';
+
+const LiquidEther = dynamic(
+  () => import('@/Backgrounds/LiquidEther/LiquidEther'),
+  { ssr: false }
+);
+
 import StaggeredMenu from '@/Components/StaggeredMenu/StaggeredMenu';
 import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import PerformanceMonitor from '@/Components/PerformanceMonitor';

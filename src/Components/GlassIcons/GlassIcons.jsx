@@ -1,5 +1,6 @@
 import './GlassIcons.css';
 import BlurText from "../../TextAnimations/BlurText";
+import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 
 import { useState, useEffect } from 'react';
 
@@ -64,11 +65,33 @@ const GlassIcons = ({ items, descriptions, className }) => {
             onClick={() => handleClick(index)}
           >
             <span className="icon-btn__back" style={getBackgroundStyle(item.color, index)}></span>
-            <span className="icon-btn__front">
+            
+            {/* GlassSurface with explicit square dimensions */}
+            <GlassSurface
+              width={128}
+              height={128}
+              borderRadius={20}
+              borderWidth={0.1}
+              brightness={50}
+              opacity={0.93}
+              blur={12}
+              displace={0.7}
+              backgroundOpacity={0.15}
+              saturation={1.2}
+              distortionScale={-180}
+              redOffset={0}
+              greenOffset={10}
+              blueOffset={20}
+              xChannel="R"
+              yChannel="G"
+              mixBlendMode="difference"
+              className="icon-btn__front"
+            >
               <span className="icon-btn__icon" aria-hidden="true">
                 {item.icon}
               </span>
-            </span>
+            </GlassSurface>
+            
             <span className="icon-btn__label">{item.label}</span>
           </button>
         ))}
