@@ -91,9 +91,6 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
-
-      { process.env.NODE_ENV === 'development' && <PerformanceMonitor /> }
-
       {/* Liquid Ether Background */}
       <div className="fixed inset-0 z-0">
         <ColorBends
@@ -417,9 +414,8 @@ export default function Home() {
             </p>
           </div>
 
-{/* 3x2 Grid */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto mb-8">
-            
+          {/* 3x2 Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto mb-8">
             {/* Row 1 */}
             <div className="flex justify-center">
               <ProfileCard
