@@ -417,8 +417,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 3x2 Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto mb-8">
+{/* 3x2 Grid */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pointer-events-auto mb-8">
             
             {/* Row 1 */}
             <div className="flex justify-center">
@@ -432,7 +432,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact Dominik')}
+                onContactClick={() => window.open('https://www.linkedin.com/in/dominik-ma%C5%A1ek-b1b386245/', '_blank')}
                 showBehindGradient={false}
               />
             </div>
@@ -448,7 +448,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact CTO')}
+                onContactClick={() => window.open('https://x.com/lustyk_jakub', '_blank')}
                 showBehindGradient={false}
               />
             </div>
@@ -464,7 +464,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact Engineer')}
+                onContactClick={() => window.open('https://portfolio-url-here.com', '_blank')}
                 showBehindGradient={false}
               />
             </div>
@@ -481,7 +481,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact Designer')}
+                onContactClick={() => window.open('https://tn.nova.cz/autor/457-monika-zverinova', '_blank')}
                 showBehindGradient={false}
               />
             </div>
@@ -497,7 +497,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact Researcher')}
+                onContactClick={() => window.open('https://www.linkedin.com/in/gretabozkova/', '_blank')}
                 showBehindGradient={false}
               />
             </div>
@@ -505,7 +505,7 @@ export default function Home() {
             <div className="flex justify-center">
               <ProfileCard
                 name="Radim"
-                title="Mehcanical engeneere"
+                title="Mechanical engineer"
                 handle="radim_novotny"
                 status="Product development"
                 contactText="Contact Me"
@@ -513,7 +513,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => console.log('Contact BD')}
+                onContactClick={() => window.open('mailto:info@treetino.com', '_blank')}
                 showBehindGradient={true}
               />
             </div>
