@@ -49,7 +49,7 @@ const color = {
 export const treetinoTimeline = [
   {
     year: "Q2 2021 - Q3 2023",
-    title: "Foundation & Operational Setup",
+    title: "Foundation & operational setup",
     description: "Establishing Treetino s.r.o. operations, legal framework, and initial business development. Built the foundation for our renewable energy infrastructure vision.",
     icon: "Building2",
     color: color.light,
@@ -86,7 +86,7 @@ export const treetinoTimeline = [
   },
   {
     year: "Q3 2023 - Q1 2024",
-    title: "Technology Development Phase",
+    title: "Technology development phase",
     description: "Research and development of proprietary solar panel and wind turbine technologies for optimal integration. Creating the core technology that makes Treetino unique.",
     icon: "Cog",
     color: color.light,
@@ -123,7 +123,7 @@ export const treetinoTimeline = [
   },
   {
     year: "Q1 2024 - Q3 2024",
-    title: "Environmental Impact Modeling",
+    title: "Environmental impact modeling",
     description: "Advanced tree projection systems, environmental impact assessment, and sustainability metrics development. Ensuring our solution benefits both energy generation and the environment.",
     icon: "Target",
     color: color.light,
@@ -160,7 +160,7 @@ export const treetinoTimeline = [
   },
   {
     year: "Q4 2024 - Q2 2025",
-    title: "Strategic Investment Acquisition",
+    title: "Strategic investment acquisition",
     description: "Successful securing of Czech Government backing through Czech Invest and private investor engagement. Critical funding milestone for prototype development and testing.",
     icon: "Handshake",
     color: color.light,
@@ -197,7 +197,7 @@ export const treetinoTimeline = [
   },
   {
     year: "Q2 2025 - Q4 2025",
-    title: "Government-Funded Prototype Testing",
+    title: "Government-funded prototype development",
     description: "Czech Invest funded comprehensive prototype validation, field testing, and performance optimization. Currently in progress - bringing our technology to life.",
     icon: "Sprout",
     color: color.light,
@@ -234,19 +234,19 @@ export const treetinoTimeline = [
   },
   {
     year: "Q3 2025 - Q1 2026",
-    title: "Blockchain Integration & Capital Raise",
+    title: "Blockchain integration & capital raise",
     description: "Decentralized fundraising platform launch, tokenomics implementation, and first renewable energy tree installation. Democratizing access to clean energy investment.",
     icon: "Layers",
     color: color.middle,
     images: [
       {
-        src: "/timeline/government.jpg",
+        src: "/timeline/moped.png",
         alt: "Blockchain platform",
-        caption: "DeFi launch",
+        caption: "Urban mobility visions",
         overlayText: "Blockchain",
         position: "right",
         offsetX: "-20%",
-        offsetY: "40%",
+        offsetY: "-50%",
         parallaxSpeed: "fast",
         size: {
           width: "340px",
@@ -271,7 +271,7 @@ export const treetinoTimeline = [
   },
   {
     year: "Q1 2026 - Q4 2026",
-    title: "Initial Network Deployment",
+    title: "Initial network deployment",
     description: "Strategic expansion across key European markets with initial infrastructure network establishment. Building the foundation for Europe's renewable energy forest.",
     icon: "Network",
     color: color.dark,
@@ -308,16 +308,16 @@ export const treetinoTimeline = [
   },
   {
     year: "Q4 2026 - Q3 2027",
-    title: "Scaling to Forest Network",
+    title: "Scaling to forest network",
     description: "Ambitious expansion to 100+ renewable energy trees, creating Europe's first blockchain-powered clean energy forest. Revolutionizing urban renewable infrastructure.",
     icon: "TreePine",
     color: color.dark,
     images: [
       {
-        src: "/timeline/prototype.jpg",
+        src: "/timeline/forest.png",
         alt: "Forest network",
-        caption: "100+ trees deployment",
-        overlayText: "Forest",
+        caption: "The future of urban mobility is electric",
+        overlayText: "Future",
         position: "right",
         offsetX: "-15%",
         offsetY: "-40%",
@@ -331,7 +331,7 @@ export const treetinoTimeline = [
         src: "/timeline/future.jpg",
         alt: "Clean energy impact",
         caption: "We imagine a full interconnected urban forest",
-        overlayText: "Future",
+        overlayText: "Forest",
         position: "left",
         offsetX: "4%",
         offsetY: "28%",

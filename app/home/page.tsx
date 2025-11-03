@@ -16,6 +16,7 @@ import TiltedCard from '@/Components/TiltedCard/TiltedCard';
 import ProfileCard from '@/Components/ProfileCard/ProfileCard'
 import PerformanceMonitor from '@/Components/PerformanceMonitor';
 import GlassIcons from '@/Components/GlassIcons/GlassIcons';
+import RotatingText from '@/Components/RotatingText/RotatingText';
 import Stepper, { Step } from '@/Components/Stepper/Stepper';
 
 import { 
@@ -132,11 +133,23 @@ export default function Home() {
         <div className="max-w-6xl w-full text-center space-y-8">
           
           {/* Main Heading */}
-          <h1 className="text-6xl md:text-8xl font-bold text-[#E8F1FF] leading-tight tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-bold text-[#E8F1FF]">
             The future of energy,
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">
-              rooted in sustainability.
+            <span className="flex items-center justify-center gap-2 mt-4">
+              rooted in 
+              <RotatingText
+                texts={['Sustainability', 'Transparency', 'Ownership']}
+                mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
             </span>
           </h1>
 
@@ -322,8 +335,20 @@ export default function Home() {
       <div className='relative mt-80'>
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-32 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
-            Main <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Numbers</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF] flex items-center justify-center gap-2">
+            <span>Main</span>
+            <RotatingText
+              texts={['Numbers', 'Information', 'Points']}
+              mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+              staggerFrom={"last"}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
+            />
           </h2>
                   
           <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
@@ -339,8 +364,20 @@ export default function Home() {
                 
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Journey</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF] flex items-center justify-center gap-2">
+              <span>Our</span>
+              <RotatingText
+                texts={['Journey', 'Roadpam', 'Timeline']}
+                mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              /> 
             </h2>
                   
             <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
@@ -359,8 +396,20 @@ export default function Home() {
           
           {/* Section Header */}
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF]">
-              Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD]">Innovators</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF] flex items-center justify-center gap-2">
+              <span>Meet the</span>
+              <RotatingText
+                texts={['Innovators', 'Visionaries', 'Makers']}
+                mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              /> 
             </h2>
             
             <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">

@@ -368,7 +368,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
                 />
 
                 {/* Description */}
-                <p className="text-base md:text-lg text-[#E8F1FF]/90 group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
+                <p className="text-base md:text-lg text-[#E8F1FF] group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
                   {event.description}
                 </p>
               </div>

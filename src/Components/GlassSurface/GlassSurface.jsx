@@ -1,6 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useId } from 'react';
+import { useEffect, useRef, useId, useState } from 'react';
 import './GlassSurface.css';
 
 const GlassSurface = ({
@@ -37,6 +35,9 @@ const GlassSurface = ({
   const blueChannelRef = useRef(null);
   const gaussianBlurRef = useRef(null);
 
+  // Add state to track if SVG filters are supported (client-side only)
+  const [svgSupported, setSvgSupported] = useState(null);
+
   const generateDisplacementMap = () => {
     const rect = containerRef.current?.getBoundingClientRect();
     const actualWidth = rect?.width || 400;
@@ -68,6 +69,27 @@ const GlassSurface = ({
   const updateDisplacementMap = () => {
     feImageRef.current?.setAttribute('href', generateDisplacementMap());
   };
+
+  const supportsSVGFilters = () => {
+    // Guard against server-side rendering
+    if (typeof window === 'undefined') return false;
+    
+    const isWebkit = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+    const isFirefox = /Firefox/.test(navigator.userAgent);
+
+    if (isWebkit || isFirefox) {
+      return false;
+    }
+
+    const div = document.createElement('div');
+    div.style.backdropFilter = `url(#${filterId})`;
+    return div.style.backdropFilter !== '';
+  };
+
+  // Check SVG support on client mount
+  useEffect(() => {
+    setSvgSupported(supportsSVGFilters());
+  }, []);
 
   useEffect(() => {
     updateDisplacementMap();
@@ -119,42 +141,9 @@ const GlassSurface = ({
   }, []);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    const resizeObserver = new ResizeObserver(() => {
-      setTimeout(updateDisplacementMap, 0);
-    });
-
-    resizeObserver.observe(containerRef.current);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
     setTimeout(updateDisplacementMap, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
-
-  const supportsSVGFilters = () => {
-    // CRITICAL: Check if we're in a browser environment
-    if (typeof window === 'undefined' || typeof document === 'undefined' || typeof navigator === 'undefined') {
-      return false;
-    }
-
-    const isWebkit = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
-    const isFirefox = /Firefox/.test(navigator.userAgent);
-
-    if (isWebkit || isFirefox) {
-      return false;
-    }
-
-    const div = document.createElement('div');
-    div.style.backdropFilter = `url(#${filterId})`;
-    return div.style.backdropFilter !== '';
-  };
 
   const containerStyle = {
     ...style,
@@ -166,10 +155,15 @@ const GlassSurface = ({
     '--filter-id': `url(#${filterId})`
   };
 
+  // Use fallback during SSR or initial render until we know if SVG is supported
+  const effectiveClassName = svgSupported === null 
+    ? `glass-surface glass-surface--fallback ${className}`
+    : `glass-surface ${svgSupported ? 'glass-surface--svg' : 'glass-surface--fallback'} ${className}`;
+
   return (
     <div
       ref={containerRef}
-      className={`glass-surface ${supportsSVGFilters() ? 'glass-surface--svg' : 'glass-surface--fallback'} ${className}`}
+      className={effectiveClassName}
       style={containerStyle}
     >
       <svg className="glass-surface__filter" xmlns="http://www.w3.org/2000/svg">
