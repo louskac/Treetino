@@ -84,64 +84,8 @@ export default function Web3Page() {
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-[#E8F1FF]/60 max-w-2xl mx-auto font-light">
-            Empowering decentralized energy trading through blockchain technology
+            Page coming soon
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 pointer-events-auto">
-            <a
-              href="/tokenomics.pdf"
-              className="px-8 py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px]"
-            >
-              Tokenomics
-            </a>
-            
-            <a
-              href="https://github.com/treetino"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative group overflow-hidden rounded-full min-w-[180px]"
-            >
-              <GlassSurface 
-                className="px-8 py-4 flex items-center justify-center border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all w-full"
-              >
-                <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors">
-                  View on GitHub
-                </span>
-              </GlassSurface>
-            </a>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16 pointer-events-auto">
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Energy NFTs</h3>
-              <p className="text-[#E8F1FF]/70">
-                Tokenize and trade renewable energy units as verifiable digital assets
-              </p>
-            </GlassSurface>
-
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Smart Contracts</h3>
-              <p className="text-[#E8F1FF]/70">
-                Automated energy distribution agreements executed on-chain
-              </p>
-            </GlassSurface>
-
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Carbon Credits</h3>
-              <p className="text-[#E8F1FF]/70">
-                Transparent tracking and trading of carbon offset certificates
-              </p>
-            </GlassSurface>
-
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Community Governance</h3>
-              <p className="text-[#E8F1FF]/70">
-                Decentralized decision-making for network improvements
-              </p>
-            </GlassSurface>
-          </div>
         </div>
       </div>
     </main>

@@ -88,42 +88,8 @@ export default function TreePage() {
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-[#E8F1FF]/60 max-w-2xl mx-auto font-light">
-            Discover how our innovative tree-inspired energy systems are revolutionizing renewable power generation
+            Page coming soon
           </p>
-
-          {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 pointer-events-auto">
-            <a
-              href="/technical-specs.pdf"
-              className="px-8 py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px]"
-            >
-              Technical Specs
-            </a>
-          </div>
-
-          {/* Content Sections */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 pointer-events-auto">
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Solar Efficiency</h3>
-              <p className="text-[#E8F1FF]/70">
-                Advanced solar panel leaf design maximizes energy capture throughout the day
-              </p>
-            </GlassSurface>
-
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Wind Integration</h3>
-              <p className="text-[#E8F1FF]/70">
-                Transparent wind turbines seamlessly blend with the aesthetic design
-              </p>
-            </GlassSurface>
-
-            <GlassSurface className="p-8 border border-[#2762AD]/30 rounded-2xl">
-              <h3 className="text-2xl font-bold text-[#E8F1FF] mb-4">Smart Grid</h3>
-              <p className="text-[#E8F1FF]/70">
-                AI-powered energy distribution optimizes power delivery in real-time
-              </p>
-            </GlassSurface>
-          </div>
         </div>
       </div>
     </main>

@@ -130,14 +130,14 @@ export default function Home() {
         <div className="max-w-6xl w-full text-center space-y-8">
           
           {/* Main Heading */}
-          <h1 className="text-6xl md:text-8xl font-bold text-[#E8F1FF]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-[#E8F1FF]">
             The future of energy,
             <br />
-            <span className="flex items-center justify-center gap-2 mt-4">
-              rooted in 
+            <span className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-4">
+              <span className="whitespace-nowrap">rooted in</span>
               <RotatingText
                 texts={['Sustainability', 'Transparency', 'Ownership']}
-                mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -151,26 +151,26 @@ export default function Home() {
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-[#E8F1FF]/60 max-w-2xl mx-auto font-light">
-            We are turning empty spaces that would normally only loose money into sustainable revenue generating assets
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#E8F1FF]/60 max-w-2xl mx-auto font-light px-4">
+            We are turning empty spaces that would normally only lose money into sustainable revenue generating assets
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 pointer-events-auto">
             <a
               href="/grant.pdf"
-              className="px-8 py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px] h-14 flex items-center justify-center"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px] h-12 sm:h-14 flex items-center justify-center text-sm sm:text-base"
             >
-              Government funded
+              Gvernment funded
             </a>
             
             <a
               href="/whitepaper.pdf"
-              className="relative group overflow-hidden rounded-full min-w-[180px]"
+              className="w-full sm:w-auto relative group overflow-hidden rounded-full min-w-[180px]"
             >
               <GlassSurface 
-                width={180}
-                height={56}
+                width="100%"
+                height={48}
                 borderRadius={28}
                 borderWidth={0.1}
                 brightness={50}
@@ -186,9 +186,9 @@ export default function Home() {
                 xChannel="R"
                 yChannel="G"
                 mixBlendMode="difference"
-                className="border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all"
+                className="border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all h-12 sm:h-14"
               >
-                <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors">
+                <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors text-sm sm:text-base">
                   Whitepaper
                 </span>
               </GlassSurface>
@@ -336,7 +336,7 @@ export default function Home() {
             <span>Main</span>
             <RotatingText
               texts={['Numbers', 'Information', 'Points']}
-              mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+              mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -365,7 +365,7 @@ export default function Home() {
               <span>Our</span>
               <RotatingText
                 texts={['Journey', 'Roadpam', 'Timeline']}
-                mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -397,7 +397,7 @@ export default function Home() {
               <span>Meet the</span>
               <RotatingText
                 texts={['Innovators', 'Visionaries', 'Makers']}
-                mainClassName="px-3 py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg"
+                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -421,7 +421,7 @@ export default function Home() {
               <ProfileCard
                 name="Dominik"
                 title="Founder & CEO"
-                handle="Dominik Masek"
+                handle="dominik_masek"
                 status="Founded Wattino"
                 contactText="LinkedIn"
                 avatarUrl="/team/dominik.png"
@@ -460,7 +460,7 @@ export default function Home() {
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
-                onContactClick={() => window.open('https://portfolio-url-here.com', '_blank')}
+                onContactClick={() => window.open('https://www.fa.cvut.cz/cs/galerie/portfolio/32439-matej-cizek/atelierove-prace', '_blank')}
                 showBehindGradient={false}
               />
             </div>
@@ -486,7 +486,7 @@ export default function Home() {
               <ProfileCard
                 name="Greta"
                 title="Digital presence"
-                handle="geta_bozkhova"
+                handle="greta_bozkova"
                 status="Social media"
                 contactText="LinkedIn"
                 avatarUrl="/team/greta.png"
