@@ -336,7 +336,7 @@ export default function Home() {
             <span>Main</span>
             <RotatingText
               texts={['Numbers', 'Information', 'Points']}
-              mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
+              mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-3xl md:text-5xl lg:text-5xl"
               staggerFrom={"last"}
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -365,7 +365,7 @@ export default function Home() {
               <span>Our</span>
               <RotatingText
                 texts={['Journey', 'Roadpam', 'Timeline']}
-                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
+                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-3xl md:text-5xl lg:text-5xl"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
@@ -397,7 +397,7 @@ export default function Home() {
               <span>Meet the</span>
               <RotatingText
                 texts={['Innovators', 'Visionaries', 'Makers']}
-                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
+                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-3xl md:text-5xl lg:text-5xl"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}

@@ -106,7 +106,7 @@
 .icon-btn:focus-visible .icon-btn__label,
 .icon-btn:hover .icon-btn__label {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(15) translateX(10);
 }
 
 @media (min-width: 768px) {

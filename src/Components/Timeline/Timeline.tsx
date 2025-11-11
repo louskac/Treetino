@@ -49,7 +49,7 @@ export default function Timeline({ events }: TimelineProps) {
   );
 
   return (
-    <div ref={containerRef} className="relative w-full py-32 px-6">
+    <div ref={containerRef} className="relative w-full py-32 px-4 md:px-6">
       <div className="max-w-[1400px] mx-auto relative">
         
         {/* Background line - desktop */}
@@ -76,7 +76,7 @@ export default function Timeline({ events }: TimelineProps) {
 
         {/* Background line - mobile */}
         <div 
-          className="md:hidden absolute left-6 w-[3px] rounded-full pointer-events-none"
+          className="md:hidden absolute left-4 w-[3px] rounded-full pointer-events-none"
           style={{
             background: 'rgba(39, 98, 173, 0.2)',
             top: 0,
@@ -86,7 +86,7 @@ export default function Timeline({ events }: TimelineProps) {
         
         {/* Animated vertical line - mobile */}
         <motion.div 
-          className="md:hidden absolute left-6 w-[3px] rounded-full pointer-events-none origin-top"
+          className="md:hidden absolute left-4 w-[3px] rounded-full pointer-events-none origin-top"
           style={{
             background: 'linear-gradient(to bottom, #2762AD, #183D89)',
             top: 0,
@@ -144,11 +144,14 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
   }, [])
 
   const IconComponent = event.icon ? getIcon(event.icon) : null;
+  
+  // Select first image for mobile display
+  const mobileImage = event.images?.[0];
 
   return (
     <div ref={itemRef} className="relative flex items-center min-h-[500px] md:min-h-[600px]">
       
-      {/* Background TiltedCard Images */}
+      {/* Background TiltedCard Images - Desktop only */}
       {event.images && event.images.map((image, imgIndex) => {
         const defaultPosition = image.position || (isLeft ? 'left' : 'right');
         const defaultOffsetX = image.offsetX || '2%';
@@ -227,7 +230,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
       
       {/* Central dot with pulse animation */}
       <motion.div
-        className="absolute left-6 md:left-1/2 md:-translate-x-1/2 z-20 top-1/2 -translate-y-1/2"
+        className="absolute left-4 md:left-1/2 md:-translate-x-1/2 z-20 top-1/2 -translate-y-1/2"
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -263,7 +266,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
           
           {/* Icon container with gradient background */}
           <div
-            className="w-16 h-16 md:w-20 md:h-20 rounded-full border-3 border-[#E8F1FF] relative z-10 flex items-center justify-center shadow-2xl"
+            className="w-14 h-14 md:w-20 md:h-20 rounded-full border-3 border-[#E8F1FF] relative z-10 flex items-center justify-center shadow-2xl"
             style={{
               background: `radial-gradient(circle, ${event.color || '#2762AD'}, ${event.color || '#183D89'})`,
               boxShadow: `0 0 30px ${event.color || '#2762AD'}90, 0 0 60px ${event.color || '#2762AD'}40`,
@@ -271,7 +274,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
           >
             {IconComponent && (
               <IconComponent 
-                className="w-8 h-8 md:w-10 md:h-10 text-white"
+                className="w-7 h-7 md:w-10 md:h-10 text-white"
                 strokeWidth={1.5}
               />
             )}
@@ -281,14 +284,14 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
 
       {/* Content card with GlassSurface */}
       <motion.div
-        className={`w-full pl-20 pr-4 md:pr-0 md:pl-0 md:w-[45%] relative z-10 ${
+        className={`w-full pl-16 pr-0 md:pr-0 md:pl-0 md:w-[45%] relative z-10 ${
           isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
         }`}
         style={{ opacity, x, scale }}
       >
         <div className="relative w-full">
           <GlassSurface
-            width={600}
+            width="600"
             height={400}
             borderRadius={16}
             borderWidth={0.08}
@@ -310,7 +313,7 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
               boxShadow: `0 8px 32px 0 rgba(39, 98, 173, 0.15), 0 0 0 2px rgba(39, 98, 173, 0.3)`,
             }}
           >
-            <div className="relative w-full h-full p-8 md:p-10">
+            <div className="relative w-full h-full p-6 md:p-10">
               {/* Subtle gradient overlay for depth */}
               <div 
                 className="absolute inset-0 opacity-50 pointer-events-none rounded-2xl"
@@ -327,50 +330,64 @@ function TimelineItem({ event, index, totalEvents }: TimelineItemProps) {
                 }}
               />
 
-              <div className="relative z-10 flex flex-col space-y-6 h-full">
-                {/* Year badge */}
-                <motion.div
-                  className="inline-flex items-center self-start"
-                  initial={{ opacity: 0, y: -20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <span 
-                    className="px-4 py-2 rounded-full text-sm md:text-base font-bold tracking-wider border-2 backdrop-blur-sm"
-                    style={{
-                      background: `linear-gradient(135deg, ${event.color || '#2762AD'}30, ${event.color || '#183D89'}15)`,
-                      borderColor: `${event.color || '#2762AD'}60`,
-                      color: '#E8F1FF',
-                      boxShadow: `0 0 20px ${event.color || '#2762AD'}30`,
-                    }}
+              <div className="relative z-10 flex flex-col md:flex-row gap-4 md:gap-6 h-full">
+                {/* Mobile Image - Shows on mobile only */}
+                {mobileImage && (
+                  <div className="md:hidden w-full h-48 rounded-xl overflow-hidden flex-shrink-0">
+                    <img
+                      src={mobileImage.src}
+                      alt={mobileImage.alt || event.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+
+                {/* Text Content */}
+                <div className="flex flex-col space-y-4 md:space-y-6 flex-grow">
+                  {/* Year badge */}
+                  <motion.div
+                    className="inline-flex items-center self-start"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
                   >
-                    {event.year}
-                  </span>
-                </motion.div>
+                    <span 
+                      className="px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-base font-bold tracking-wider border-2 backdrop-blur-sm"
+                      style={{
+                        background: `linear-gradient(135deg, ${event.color || '#2762AD'}30, ${event.color || '#183D89'}15)`,
+                        borderColor: `${event.color || '#2762AD'}60`,
+                        color: '#E8F1FF',
+                        boxShadow: `0 0 20px ${event.color || '#2762AD'}30`,
+                      }}
+                    >
+                      {event.year}
+                    </span>
+                  </motion.div>
 
-                {/* Title */}
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#E8F1FF] group-hover:text-white transition-colors leading-tight drop-shadow-lg">
-                  {event.title}
-                </h3>
+                  {/* Title */}
+                  <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-[#E8F1FF] group-hover:text-white transition-colors leading-tight drop-shadow-lg">
+                    {event.title}
+                  </h3>
 
-                {/* Decorative divider */}
-                <motion.div
-                  className="h-1 w-20 md:w-24 rounded-full shadow-lg"
-                  style={{
-                    background: `linear-gradient(90deg, ${event.color || '#2762AD'}, transparent)`,
-                    boxShadow: `0 0 10px ${event.color || '#2762AD'}80`,
-                  }}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '6rem' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                />
+                  {/* Decorative divider */}
+                  <motion.div
+                    className="h-1 w-16 md:w-24 rounded-full shadow-lg"
+                    style={{
+                      background: `linear-gradient(90deg, ${event.color || '#2762AD'}, transparent)`,
+                      boxShadow: `0 0 10px ${event.color || '#2762AD'}80`,
+                    }}
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '4rem' }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  />
 
-                {/* Description */}
-                <p className="text-base md:text-lg text-[#E8F1FF] group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
-                  {event.description}
-                </p>
+                  {/* Description */}
+                  <p className="text-sm md:text-lg text-[#E8F1FF] group-hover:text-[#E8F1FF] transition-colors leading-relaxed flex-grow drop-shadow-md">
+                    {event.description}
+                  </p>
+                </div>
               </div>
             </div>
           </GlassSurface>
