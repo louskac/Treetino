@@ -30,29 +30,29 @@ interface ScrollSection {
 const scrollSections: ScrollSection[] = [
   {
     id: 'foundation',
-    title: 'Smart Foundation',
-    content: 'Intelligent foundation systems house AI optimization cores and grid connection infrastructure.',
+    title: 'Smart foundation',
+    content: 'Intelligent foundation systems house AI optimization cores and grid connection infrastructure. Because of our patented technology our tree branches can track sun movement increasing the efficiency by up to 32%.',
     cameraPosition: [77.61, -49.60, -76.92],
-    stat: '30%',
-    statLabel: 'cheaper energy',
+    stat: '32%',
+    statLabel: 'efficiency increase',
     lightBoost: 1.0
   },
   {
     id: 'solar',
-    title: 'Solar Canopy',
-    content: 'Biomimetic solar leaves with AI-driven sun tracking maximize energy output throughout the day.',
+    title: 'Peak efficiency',
+    content: 'We are using the most modern solar panels in the market allowing us to produce more power compared to our copetitors. Our leaf design also alows for a better cooling properties because of which the panel can produce more energy even at higher tempreatures.',
     cameraPosition: [80, 40, 80],
-    stat: '12.9kW',
-    statLabel: 'peak solar',
+    stat: '300',
+    statLabel: 'solar pannel leafs',
     lightBoost: 1.0
   },
   {
     id: 'wind',
-    title: 'Wind Capture',
-    content: 'Vertical axis micro turbines efficiently harvest urban wind patterns day and night.',
+    title: 'Combining solar and wind',
+    content: 'All competitors in our nieche only focus on solar energy, we add to our trees our own developed wind turbines allowing us to produce enrgy even at night. The wind turbines are also our specific deisgn developed with Czech Technical University increasing energy production at lower wind speeds and making the turbine silent, which is necessary in urban enviroments.',
     cameraPosition: [-53.82, 203.87, -147.30],
     stat: '12',
-    statLabel: 'turbines',
+    statLabel: 'transparent turbines',
     lightBoost: 2.2
   }
 ];
@@ -230,10 +230,10 @@ export default function TreePage() {
               transition={{ duration: 0.8 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#E8F1FF]"
             >
-              The Future of<br />
+              Futuristic powerplants<br />
               <span className="inline-flex items-center justify-center gap-2 mt-4">
                 <RotatingText
-                  texts={['Clean Energy', 'Solar Power', 'Wind Energy']}
+                  texts={['shaped as tree', 'in urban energy grids', 'for sustainable future']}
                   mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
                   staggerFrom={"last"}
                   initial={{ y: "100%" }}
@@ -253,20 +253,19 @@ export default function TreePage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#E8F1FF]/60 max-w-2xl mx-auto font-light"
             >
-              Tokenized energy infrastructure.<br />
-              Real revenue. Real returns.
+              We are developing the product for the past 4 years following a very specific nieche in the market - deisgn sustainable energy production in urban enviroment
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center gap-4 pt-4 pointer-events-auto mx-auto"
+              className="flex flex-wrap items-center justify-center gap-4 pt-4 pointer-events-auto mx-auto max-w-5xl"
             >
               <div className="relative overflow-hidden rounded-2xl group">
                 <GlassSurface 
                   width="320px"
-                  height={100}
+                  height={140}
                   borderRadius={16}
                   borderWidth={0.1}
                   brightness={50}
@@ -284,15 +283,16 @@ export default function TreePage() {
                   mixBlendMode="difference"
                   className="border border-[#2762AD]/30 group-hover:border-[#2762AD]/60 transition-all"
                 >
-                  <div className="flex items-start space-x-3 px-6">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#2762AD] to-[#183D89] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                  <div className="flex flex-col items-center justify-center space-y-3 px-8 py-6 h-full">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#2762AD] to-[#183D89] rounded-lg flex items-center justify-center flex-shrink-0">
+                      {/* Government building with columns icon */}
+                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 1L2 6v2h20V6L12 1zm-2 9H8v8h2v-8zm4 0h-2v8h2v-8zm4 0h-2v8h2v-8zM6 10H4v8h2v-8zm14 9H4v2h16v-2z"/>
                       </svg>
                     </div>
-                    <div className="flex-1 text-left">
-                      <div className="text-base font-semibold text-[#E8F1FF] mb-1">Czech Government</div>
-                      <div className="text-xs text-[#E8F1FF]/60">Ministry of Industry and Trade grant</div>
+                    <div className="text-center">
+                      <div className="text-base font-semibold text-[#E8F1FF] mb-1">Czech government</div>
+                      <div className="text-xs text-[#E8F1FF]/60">Technological Incubation grant</div>
                     </div>
                   </div>
                 </GlassSurface>
@@ -301,7 +301,7 @@ export default function TreePage() {
               <div className="relative overflow-hidden rounded-2xl group">
                 <GlassSurface 
                   width="320px"
-                  height={100}
+                  height={140}
                   borderRadius={16}
                   borderWidth={0.1}
                   brightness={50}
@@ -319,13 +319,13 @@ export default function TreePage() {
                   mixBlendMode="difference"
                   className="border border-[#2762AD]/30 group-hover:border-[#2762AD]/60 transition-all"
                 >
-                  <div className="flex items-start space-x-3 px-6">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#183D89] to-[#2A293A] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <div className="flex flex-col items-center justify-center space-y-3 px-8 py-6 h-full">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#183D89] to-[#2A293A] rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2L2 7L12 12L22 7L12 2M2 17L12 22L22 17V11L12 16L2 11V17Z"/>
                       </svg>
                     </div>
-                    <div className="flex-1 text-left">
+                    <div className="text-center">
                       <div className="text-base font-semibold text-[#E8F1FF] mb-1">Makeiton</div>
                       <div className="text-xs text-[#E8F1FF]/60">Top Czech HW accelerator program</div>
                     </div>
@@ -336,7 +336,7 @@ export default function TreePage() {
               <div className="relative overflow-hidden rounded-2xl group">
                 <GlassSurface 
                   width="320px"
-                  height={100}
+                  height={140}
                   borderRadius={16}
                   borderWidth={0.1}
                   brightness={50}
@@ -354,13 +354,15 @@ export default function TreePage() {
                   mixBlendMode="difference"
                   className="border border-[#2762AD]/30 group-hover:border-[#2762AD]/60 transition-all"
                 >
-                  <div className="flex items-start space-x-3 px-6">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#2A293A] to-[#2762AD] rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M13 7H11V11H7V13H11V17H13V13H17V11H13V7M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/>
+                  <div className="flex flex-col items-center justify-center space-y-3 px-8 py-6 h-full">
+                    <div className="w-12 h-12 bg-gradient-to-br from-[#2A293A] to-[#2762AD] rounded-lg flex items-center justify-center flex-shrink-0">
+                      {/* KBC logo - blue swimmer */}
+                      <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="6" r="3"/>
+                        <path d="M4 14c0-2 2-3 4-3.5L12 12l4-1.5c2 0.5 4 1.5 4 3.5-2 2-4 3-8 3s-6-1-8-3z"/>
                       </svg>
                     </div>
-                    <div className="flex-1 text-left">
+                    <div className="text-center">
                       <div className="text-base font-semibold text-[#E8F1FF] mb-1">ČSOB Seed Starter</div>
                       <div className="text-xs text-[#E8F1FF]/60">KBC Group acceleration</div>
                     </div>
@@ -404,7 +406,7 @@ export default function TreePage() {
             <div className="relative overflow-hidden rounded-3xl group">
               <GlassSurface 
                 width="100%"
-                height={400}
+                height={500}
                 borderRadius={24}
                 borderWidth={0.1}
                 brightness={40}

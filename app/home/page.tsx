@@ -136,7 +136,7 @@ export default function Home() {
             <span className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-4">
               <span className="whitespace-nowrap">rooted in</span>
               <RotatingText
-                texts={['Sustainability', 'Transparency', 'Ownership']}
+                texts={['sustainability', 'green', 'renewable']}
                 mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-7xl"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
