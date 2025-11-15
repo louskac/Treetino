@@ -456,7 +456,7 @@ export default function TreePage() {
         <div className={`fixed ${isMobile ? 'bottom-8 left-1/2 -translate-x-1/2' : 'right-8 top-1/2 -translate-y-1/2'} z-50`}>
           <div className="relative overflow-hidden rounded-full">
             <GlassSurface 
-              width={isMobile ? "150px" : "10px"}
+              width={isMobile ? "150px" : "50px"}
               height={isMobile ? 60 : 180}
               borderRadius={9999}
               borderWidth={0.1}
