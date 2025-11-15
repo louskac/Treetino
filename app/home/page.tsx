@@ -198,17 +198,17 @@ export default function Home() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce pointer-events-none">
-          <svg 
-            className="w-6 h-6 text-[#E8F1FF]/40" 
-            fill="none" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="2" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            className="flex items-center space-x-3 text-[#E8F1FF]/30 animate-bounce"
           >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
+            <div className="w-6 h-10 border-2 border-[#E8F1FF]/20 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-[#E8F1FF]/30 rounded-full mt-2 animate-pulse" />
+            </div>
+            <span className="text-base font-light">Learn more</span>
+          </motion.div>
         </div>
       </div>
 
