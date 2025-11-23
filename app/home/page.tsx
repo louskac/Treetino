@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import dynamic from 'next/dynamic';
+import PartnersGrid from '@/Components/PartnersGrid/PartnersGrid';
 
 const ColorBends = dynamic(
   () => import('@/Backgrounds/ColorBends/ColorBends'),
@@ -68,6 +69,34 @@ const descriptions = [
   'Powering up to 60 modern households with combined solar and wind technology'
 ];
 
+// Add this constant near the top of your Home component (after the other constants)
+const partners = [
+  {
+    name: 'Czech Invest',
+    logo: '/partners/CzechInvest.png',
+    description: 'Goverment agency picking starttups for the Technological Incubation grant porgram awarding us with 250k grant'
+  },
+  {
+    name: 'Make-iton',
+    logo: '/partners/Makeiton.png',
+    description: 'Czech number 1 HW incubator located in Prague, providing us with workshop and connecting us well in the industry'
+  },
+  {
+    name: 'Start It ČSOB',
+    logo: '/partners/Csob.png',
+    description: 'Startup acceleration program backed by one of the biggest banks in Czech Republic - ČSOB which is part of the global KBC group'
+  },
+  {
+    name: 'CTU - Czech Technical University',
+    logo: '/partners/Cvut.webp',
+    description: 'The best engeneering school in the country, in touch with both faculty of electrical engennering developing new generator and faculty of mechanical engeneering to develop in their wind tunel'
+  },
+  {
+    name: 'Central Bohemia innovation center',
+    logo: '/partners/Sic.png',
+    description: 'Institute providing mentoring and business contacts for statrups in central Bohemia - best connections for heavy industry and academia'
+  }
+];
 
 export default function Home() {
   // Create a ref for the intro section to track scroll
@@ -259,7 +288,7 @@ export default function Home() {
                 rotationEnd="center center"
                 textClassName="text-white"
               >
-                In an ever more reliant world on electricity we are creating futuristic powerplants designed as trees with solar panels as leafs and transparent wind turbines to produce energy consistently. 
+                In an ever more reliant world on electricity we are creating futuristic powerplants designed as trees with solar panels as leafs and transparent wind turbines to produce clean energy on demand. 
               </ScrollReveal>
             </div>
 
@@ -327,6 +356,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Partners Section */}
+      <PartnersGrid partners={partners} />
 
       {/* 6 main numbers */}       
       <div className='relative mt-80'>
