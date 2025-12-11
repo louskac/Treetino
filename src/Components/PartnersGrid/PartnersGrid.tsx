@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import GlassSurface from '@/Components/GlassSurface/GlassSurface';
 import Image from 'next/image';
 
 interface Partner {
@@ -108,6 +109,44 @@ export default function PartnersStrip({ partners }: PartnersStripProps) {
               )}
             </motion.div>
           ))}
+        </div>
+        
+        {/* Government Grant Button Section */}
+        {/* Adjusted padding (py-16) and removed min-h-screen to collapse vertical space. */}
+        <div className="relative z-10 flex justify-center items-center py-16 px-6">
+          <div className="max-w-6xl w-full text-center space-y-8">
+            <a
+              href="/grant.pdf"
+              // Set to w-fit and inline-flex to ensure the button maintains its small width
+              // even after the link has been visited.
+              className="relative group overflow-hidden rounded-full min-w-[180px] w-fit inline-flex pointer-events-auto"
+            >
+              <GlassSurface 
+                width="100%"
+                height={48}
+                borderRadius={28}
+                borderWidth={0.1}
+                brightness={50}
+                opacity={0.93}
+                blur={12}
+                displace={0.7}
+                backgroundOpacity={0.15}
+                saturation={1.2}
+                distortionScale={-180}
+                redOffset={0}
+                greenOffset={10}
+                blueOffset={20}
+                xChannel="R"
+                yChannel="G"
+                mixBlendMode="difference"
+                className="border border-[#2762AD]/50 group-hover:border-[#2762AD] transition-all h-12 sm:h-14"
+              >
+                <span className="text-[#E8F1FF] font-semibold group-hover:text-white transition-colors text-sm sm:text-base">
+                  Goverment grant    
+                </span>
+              </GlassSurface>
+            </a>
+          </div>
         </div>
       </div>
     </div>

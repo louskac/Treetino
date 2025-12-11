@@ -187,10 +187,10 @@ export default function Home() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 pointer-events-auto">
             <a
-              href="/grant.pdf"
+              href="/pitchdeck.pdf"
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#2762AD] hover:bg-[#183D89] text-[#E8F1FF] font-semibold rounded-full transition-all duration-300 hover:scale-105 min-w-[180px] h-12 sm:h-14 flex items-center justify-center text-sm sm:text-base"
             >
-              Gvernment funded
+              Pitchdeck
             </a>
             
             <a
