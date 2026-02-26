@@ -20,7 +20,7 @@ import GlassIcons from '@/Components/GlassIcons/GlassIcons';
 import RotatingText from '@/Components/RotatingText/RotatingText';
 import Stepper, { Step } from '@/Components/Stepper/Stepper';
 
-import { 
+import {
   GiWindTurbine,      // Wind turbine icon
   GiSolidLeaf,       // Solar panel icon  
   GiElectric,         // Lightning/electricity icon
@@ -83,7 +83,7 @@ const partners = [
   },
   {
     name: 'Start It ČSOB',
-    logo: '/partners/Csob.png',
+    logo: '/partners/startit.svg',
     description: 'Startup acceleration program backed by one of the biggest banks in Czech Republic - ČSOB which is part of the global KBC group'
   },
   {
@@ -95,13 +95,18 @@ const partners = [
     name: 'Central Bohemia innovation center',
     logo: '/partners/Sic.png',
     description: 'Institute providing mentoring and business contacts for statrups in central Bohemia - best connections for heavy industry and academia'
+  },
+  {
+    name: 'Institute of Physics of the Czech Academy of Sciences',
+    logo: '/partners/fzu.svg',
+    description: 'Top scientific institution in Czech Republic assisting us with material development and state of the art technological advisory'
   }
 ];
 
 export default function Home() {
   // Create a ref for the intro section to track scroll
   const introRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll progress of the intro section
   const { scrollYProgress } = useScroll({
     target: introRef,
@@ -111,10 +116,10 @@ export default function Home() {
   // Different parallax speeds for each card
   // Card 1 (Left upper): Fast upward movement
   const card1Y = useTransform(scrollYProgress, [0, 1], [150, -200]);
-  
+
   // Card 2 (Right): Medium speed downward movement
   const card2Y = useTransform(scrollYProgress, [0, 1], [-100, 150]);
-  
+
   // Card 3 (Left lower): Slow upward movement
   const card3Y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
@@ -157,7 +162,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 pointer-events-none">
         <div className="max-w-6xl w-full text-center space-y-8">
-          
+
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-[#E8F1FF]">
             The future of energy,
@@ -192,12 +197,12 @@ export default function Home() {
             >
               Pitchdeck
             </a>
-            
+
             <a
               href="/whitepaper.pdf"
               className="w-full sm:w-auto relative group overflow-hidden rounded-full min-w-[180px]"
             >
-              <GlassSurface 
+              <GlassSurface
                 width="100%"
                 height={48}
                 borderRadius={28}
@@ -245,11 +250,11 @@ export default function Home() {
       <div ref={introRef} className="relative z-10 flex min-h-[80vh] items-center justify-center">
         <div className='max-w-7xl w-full mx-auto px-6 sticky top-1/3 -translate-y-1/3'>
           <div className="relative flex items-center justify-center">
-            
+
             {/* Left Tilted Card - higher and tilted right - FAST PARALLAX */}
-            <motion.div 
-              className="absolute -left-32 top-20 -translate-y-[60%] z-0 pointer-events-auto" 
-              style={{ 
+            <motion.div
+              className="absolute -left-32 top-20 -translate-y-[60%] z-0 pointer-events-auto"
+              style={{
                 transform: 'translateY(-60%) rotateY(15deg) rotateX(-5deg)',
                 y: card1Y
               }}
@@ -288,14 +293,14 @@ export default function Home() {
                 rotationEnd="center center"
                 textClassName="text-white"
               >
-                In an ever more reliant world on electricity we are creating futuristic powerplants designed as trees with solar panels as leafs and transparent wind turbines to produce clean energy on demand. 
+                In an ever more reliant world on electricity we are creating futuristic powerplants designed as trees with solar panels as leafs and transparent wind turbines to produce clean energy on demand.
               </ScrollReveal>
             </div>
 
             {/* Right Tilted Card - lower and tilted left - MEDIUM PARALLAX */}
-            <motion.div 
-              className="absolute -right-32 top-1/2 -translate-y-[40%] z-0 pointer-events-auto" 
-              style={{ 
+            <motion.div
+              className="absolute -right-32 top-1/2 -translate-y-[40%] z-0 pointer-events-auto"
+              style={{
                 transform: 'translateY(-40%) rotateY(-15deg) rotateX(5deg)',
                 y: card2Y
               }}
@@ -322,11 +327,11 @@ export default function Home() {
                 }
               />
             </motion.div>
-            
+
             {/* Left lower card - lower and tilted left - SLOW PARALLAX */}
-            <motion.div 
-              className="absolute -left-0 top-[45vh] -translate-y-[60%] z-0 pointer-events-auto" 
-              style={{ 
+            <motion.div
+              className="absolute -left-0 top-[45vh] -translate-y-[60%] z-0 pointer-events-auto"
+              style={{
                 transform: 'translateY(-60%) rotateY(15deg) rotateX(-5deg)',
                 y: card3Y
               }}
@@ -360,7 +365,7 @@ export default function Home() {
       {/* Partners Section */}
       <PartnersGrid partners={partners} />
 
-      {/* 6 main numbers */}       
+      {/* 6 main numbers */}
       <div className='relative mt-80'>
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-32 space-y-4">
@@ -379,18 +384,18 @@ export default function Home() {
               rotationInterval={2000}
             />
           </h2>
-                  
+
           <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
             The most important information about our product
           </p>
         </div>
-        <GlassIcons items={items} descriptions={descriptions} className="custom-class"/>        
+        <GlassIcons items={items} descriptions={descriptions} className="custom-class" />
       </div>
 
       {/* Timeline Section - Our Journey */}
       <div className="relative z-10 py-80 px-6">
         <div className="max-w-7xl w-full mx-auto">
-                
+
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF] flex items-center justify-center gap-2">
@@ -406,14 +411,14 @@ export default function Home() {
                 splitLevelClassName="overflow-hidden"
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={2000}
-              /> 
+              />
             </h2>
-                  
+
             <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
               From vision to reality - the milestones that shaped Treetino
             </p>
           </div>
-      
+
           {/* Timeline Component */}
           <Timeline events={treetinoTimeline} />
         </div>
@@ -422,7 +427,7 @@ export default function Home() {
       {/* Team Section - 3x2 Grid of Profile Cards */}
       <div className="relative z-10 py-20 px-6">
         <div className="max-w-7xl w-full mx-auto">
-          
+
           {/* Section Header */}
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF] flex items-center justify-center gap-2">
@@ -438,9 +443,9 @@ export default function Home() {
                 splitLevelClassName="overflow-hidden"
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={2000}
-              /> 
+              />
             </h2>
-            
+
             <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
               The minds behind the sustainable energy revolution
             </p>
