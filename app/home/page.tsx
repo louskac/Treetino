@@ -19,6 +19,7 @@ import PerformanceMonitor from '@/Components/PerformanceMonitor';
 import GlassIcons from '@/Components/GlassIcons/GlassIcons';
 import RotatingText from '@/Components/RotatingText/RotatingText';
 import Stepper, { Step } from '@/Components/Stepper/Stepper';
+import ContactForm from '@/Components/ContactForm/ContactForm';
 
 import {
   GiWindTurbine,      // Wind turbine icon
@@ -555,8 +556,32 @@ export default function Home() {
       </div>
 
       {/* Contact minimal */}
-      <div className="relative z-10 py-20 px-6">
+      <div className="relative z-10 py-40 px-6">
         <div className="max-w-7xl w-full mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#E8F1FF] flex items-center justify-center gap-2">
+              <span>Get in</span>
+              <RotatingText
+                texts={['Touch', 'Contact', 'Reach Out']}
+                mainClassName="px-2 py-1 sm:px-3 sm:py-2 bg-gradient-to-r from-[#2762AD] via-[#183D89] to-[#2762AD] text-white rounded-lg text-3xl sm:text-3xl md:text-5xl lg:text-5xl"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
+            </h2>
+
+            <p className="text-lg text-[#E8F1FF]/60 max-w-2xl mx-auto">
+              Ready to start your green energy journey? Send us a message today.
+            </p>
+          </div>
+
+          <ContactForm mode="minimal" className="max-w-3xl mx-auto" />
         </div>
       </div>
     </main>

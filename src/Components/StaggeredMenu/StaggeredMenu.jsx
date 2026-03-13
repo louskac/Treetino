@@ -432,9 +432,10 @@ export const StaggeredMenu = ({
           className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
           aria-label="Main navigation header"
         >
-          <div
-            className="sm-logo flex items-center select-none pointer-events-auto"
-            aria-label="Logo"
+          <a
+            href="/home"
+            className="sm-logo flex items-center select-none pointer-events-auto cursor-pointer"
+            aria-label="Home"
           >
             <img
               src={logoUrl || "/src/assets/logos/reactbits-gh-white.svg"}
@@ -444,7 +445,7 @@ export const StaggeredMenu = ({
               width={110}
               height={24}
             />
-          </div>
+          </a>
 
           <button
             ref={toggleBtnRef}

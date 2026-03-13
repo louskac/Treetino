@@ -24,6 +24,8 @@ const menuItems: MenuItem[] = [
   { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
 ];
 
+import ContactForm from '@/Components/ContactForm/ContactForm';
+
 const socialItems: MenuItem[] = [
   { label: 'Twitter', ariaLabel: 'Visit our Twitter', link: 'https://twitter.com/treetino' },
   { label: 'Telegram', ariaLabel: 'Join our Telegram', link: 'https://t.me/treetino' },
@@ -31,24 +33,6 @@ const socialItems: MenuItem[] = [
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
@@ -105,6 +89,8 @@ export default function ContactPage() {
               Reach out on info@treetino.com
             </p>
           </div>
+
+          <ContactForm mode="detailed" className="mt-12" />
         </div>
       </div>
     </main>
